@@ -1,0 +1,32 @@
+{
+  "identity": {
+    "id": "flight",
+    "name": "航班搜索",
+    "description": "搜索航班，查看详情，预订机票，支持按价格、时间、航空公司筛选",
+    "keywords": ["机票", "航班", "飞机", "订票", "fly", "flight", "travel to"],
+    "usageScenarios": "用户需要查询或预订机票时使用，可处理单程、往返查询"
+  },
+  "layoutConfig": {
+    "layoutOptions": ["horizontal-scrollable-list"],
+    "defaultLayout": "horizontal-scrollable-list",
+    "layoutDescriptions": {
+      "horizontal-scrollable-list": "航班横向滑动展示，当前项显示完整航班信息，待看项显示航空公司和价格"
+    }
+  },
+  "styleOptions": {
+    "cardStyle": ["elevated", "flat", "outlined"],
+    "colorScheme": ["auto", "blue", "primary"],
+    "density": ["comfortable", "compact", "spacious"]
+  },
+  "dataAdapter": "FlightAdapter",
+  "apis": {
+    "initial": "flights/search",
+    "detail": "flights/detail",
+    "book": "flights/book"
+  },
+  "interactions": {
+    "onItemClick": "detail",
+    "onBookClick": "book"
+  }
+}
+

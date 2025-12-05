@@ -1,0 +1,30 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "workflow_1",
+      "name": "出行规划",
+      "icon": "✈️",
+      "description": "自动规划完整出行方案",
+      "steps": 3,
+      "status": "ready"
+    },
+    {
+      "id": "workflow_2",
+      "name": "邮件整理",
+      "icon": "📧",
+      "description": "自动整理和分类邮件",
+      "steps": 2,
+      "status": "ready"
+    },
+    {
+      "id": "workflow_3",
+      "name": "日程同步",
+      "icon": "🔄",
+      "description": "同步多个日历到一处",
+      "steps": 4,
+      "status": "ready"
+    }
+  ]
+}
+

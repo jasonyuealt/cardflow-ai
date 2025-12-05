@@ -1,0 +1,126 @@
+  {
+  "horizontal_scrollable_list": {
+    "name": "横向滑动列表卡片",
+    "description": "多个选项横向排列，当前项显示完整信息，待看项显示简略信息，总宽度占满一屏",
+    "layout_pattern": "当前项（完整）+ 待看项（简略）横向滑动",
+    "modules": [
+  {
+    "name": "Flight",
+    "purpose": "航班搜索和预订",
+    "when_to_use": [
+      "强烈的航班意图关键词（fly, flight, book flight, travel to 等）",
+      "位置模式识别：'from [location] to [location]'",
+      "目的地解析：当查询包含航班意图 + 位置引用时"
+    ]
+  },
+  {
+    "name": "Shopping",
+    "purpose": "商品搜索和购物（支持 Amazon Japan, Yahoo Japan, 和 Rakuten 平台）",
+    "when_to_use": [
+      "商品搜索和推荐",
+      "特定商品请求（iPhone, MacBook 等）",
+      "带有品牌或类别的购物意图"
+    ]
+  },
+  {
+    "name": "Yelp",
+    "purpose": "餐厅/本地服务搜索",
+    "when_to_use": [
+      "强烈的餐厅意图关键词（restaurant, food, dining, eat, lunch, dinner 等）",
+      "目的地的位置模式识别",
+      "搜索餐厅、咖啡馆、酒吧、酒馆"
+    ]
+  },
+  {
+    "name": "Videos",
+    "purpose": "视频搜索和娱乐",
+    "when_to_use": [
+      "视频搜索请求"
+    ]
+  },
+  {
+    "name": "Images",
+    "purpose": "图片搜索",
+    "when_to_use": [
+      "图片搜索请求"
+        ]
+      }
+    ]
+  },
+  "info_display": {
+    "name": "信息展示卡片",
+    "description": "展示搜索结果、实时数据或静态信息，内容横向滑动展示不同信息片段",
+    "layout_pattern": "信息片段横向滑动",
+    "modules": [
+  {
+        "name": "InfoCard",
+        "purpose": "在线搜索当前信息、新闻、事实和实时数据",
+    "when_to_use": [
+          "超出知识截止日期的当前信息问题（时事、近期发展）",
+          "实时数据请求（当前天气、实时体育比分、当前汇率、股票价格）",
+          "当前状态查询（现任总统是谁、最新新闻、时事）",
+          "需要在线搜索的问题（'search for', 'find information about'）",
+          "需要研究和解释的复杂主题（历史事实、科学概念、操作指南）"
+        ]
+      }
+    ]
+  },
+  "interactive_action": {
+    "name": "交互操作卡片",
+    "description": "以操作和交互为主，横向滑动展示不同操作选项或历史记录",
+    "layout_pattern": "操作选项/历史记录横向滑动",
+    "modules": [
+      {
+        "name": "LineGeneralAgent",
+        "purpose": "与朋友/他人聊天以确认或询问具体事项",
+        "when_to_use": [
+          "任何形式的询问、请求或与他人沟通",
+          "从他人获取信息（电话号码、地址、是否有空、偏好、意见、确认）",
+          "向群组或团队询问信息或决定（会议时间、偏好、确认）",
+          "可以通过 Line、WhatsApp 等消息应用进行的沟通",
+          "关键词：'ask', 'get [person's]', 'tell [person]', 'check with [person]', 'find out from [person]'"
+        ]
+      },
+      {
+        "name": "GeneralAgent",
+        "purpose": "访问和控制特定的第三方应用程序和服务（26 个预定义工作流程）",
+        "when_to_use": [
+          "Gmail 操作：'Tell me content of recent email'（告诉我最近邮件的内容）,'send email to [person]'（发送邮件给某人）,'mark email as starred'（标星邮件）,'unstar email'（取消标星）,'mark email as read/unread'（标记已读/未读）,'archive email'（归档邮件）,'mark email as important'（标记重要）,'move email to trash'（移至回收站）,'mark as spam'（标记垃圾邮件）",
+          "Google Maps：'use google maps to search [location]'（用谷歌地图搜索位置）,'navigate to [place]'（导航到某地）",
+          "Google Calendar：'add to calendar'（添加到日历）,'check my schedule'（检查我的日程）,'create calendar event'（创建日历事件）",
+          "特定应用请求：Rakuten Travel（乐天旅游）等",
+          "第三方服务集成及提及的特定平台"
+    ]
+  },
+  {
+    "name": "OrchestrationAgent",
+    "purpose": "多步骤工作流程，结合来自多个来源的数据（邮件+食谱，日历+地图），访问用户信息（电话、邮件、个人资料），启动/安装应用程序，或按顺序使用任何 GeneralAgent 场景",
+    "when_to_use": [
+      "显式编排请求：查询包含关键词 'by orchestration'",
+      "多步骤工作流程：查询需要多个操作或顺序步骤",
+      "LINE 应用多步骤工作流程：涉及 LINE 应用消息传递与其他操作结合的查询",
+      "用户信息访问：获取用户的个人信息（电话号码、电子邮件、姓名、个人资料）",
+      "应用程序控制：启动、安装或控制应用程序",
+      "计算机使用（Computer Use）：26 个 GeneralAgent 场景未涵盖的应用程序"
+    ]
+  }
+]
+  },
+  "map_view_horizontal": {
+    "name": "横向滑动地图视图卡片",
+    "description": "包含地图组件，横向滑动展示推荐地点或路线方案",
+    "layout_pattern": "地图 + 地点选项横向滑动",
+    "modules": [
+      {
+        "name": "MeetingView",
+        "purpose": "基于用户和对方的位置，可视化并帮助用户选择合理的会面/约会地点",
+        "when_to_use": [
+          "位置提取成功（出发地和目的地都找到了）",
+          "上下文提及约会/会面关键词（约会, デート, date, meet 等）",
+          "用户想与另一个人计划会面/约会",
+          "用户需要帮助选择合适的会面地点"
+        ]
+      }
+    ]
+  }
+}

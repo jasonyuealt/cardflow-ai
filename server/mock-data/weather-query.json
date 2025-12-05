@@ -1,0 +1,67 @@
+{
+  "delay": 300,
+  "response": {
+    "city": "上海",
+    "current": {
+      "temperature": 25,
+      "weather": "晴",
+      "humidity": 65,
+      "windSpeed": 12,
+      "windDirection": "东南风",
+      "airQuality": {
+        "aqi": 85,
+        "level": "良",
+        "pm25": 45
+      },
+      "updateTime": "2025-12-02 14:30:00"
+    },
+    "forecast": [
+      {
+        "date": "2025-12-02",
+        "dayOfWeek": "星期二",
+        "weather": "晴",
+        "tempHigh": 26,
+        "tempLow": 18,
+        "icon": "☀️"
+      },
+      {
+        "date": "2025-12-03",
+        "dayOfWeek": "星期三",
+        "weather": "多云",
+        "tempHigh": 24,
+        "tempLow": 17,
+        "icon": "⛅"
+      },
+      {
+        "date": "2025-12-04",
+        "dayOfWeek": "星期四",
+        "weather": "小雨",
+        "tempHigh": 21,
+        "tempLow": 15,
+        "icon": "🌧️"
+      },
+      {
+        "date": "2025-12-05",
+        "dayOfWeek": "星期五",
+        "weather": "阴",
+        "tempHigh": 20,
+        "tempLow": 14,
+        "icon": "☁️"
+      },
+      {
+        "date": "2025-12-06",
+        "dayOfWeek": "星期六",
+        "weather": "晴",
+        "tempHigh": 23,
+        "tempLow": 16,
+        "icon": "☀️"
+      }
+    ],
+    "suggestions": {
+      "clothing": "建议穿薄外套或长袖衬衫",
+      "sport": "适宜户外运动",
+      "uv": "紫外线强度中等，建议涂抹防晒霜"
+    }
+  }
+}
+

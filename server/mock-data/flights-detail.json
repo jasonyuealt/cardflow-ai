@@ -1,0 +1,35 @@
+{
+  "delay": 300,
+  "response": {
+    "id": "${params.flightId}",
+    "flightNumber": "CZ3001",
+    "airline": "南方航空",
+    "from": "北京首都国际机场 (PEK)",
+    "to": "上海浦东国际机场 (PVG)",
+    "departure": "08:00",
+    "arrival": "10:30",
+    "duration": "2h30m",
+    "price": 580,
+    "aircraft": "空客A320",
+    "terminal": {
+      "departure": "T3",
+      "arrival": "T2"
+    },
+    "seats": {
+      "available": ["1A", "1B", "2C", "3D", "4E", "5F"],
+      "total": 120
+    },
+    "services": [
+      "餐食",
+      "WiFi",
+      "娱乐系统",
+      "座椅电源"
+    ],
+    "baggageAllowance": {
+      "checkedBaggage": "20kg",
+      "carryOn": "5kg"
+    },
+    "cancellationPolicy": "起飞前24小时可免费取消"
+  }
+}
+

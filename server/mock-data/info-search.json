@@ -1,0 +1,30 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "info_1",
+      "title": "最新科技资讯：AI 技术突破性进展",
+      "summary": "人工智能领域取得重大突破，新型大语言模型展现出前所未有的推理能力...",
+      "source": "科技日报",
+      "time": "2小时前",
+      "url": "https://example.com/news/1"
+    },
+    {
+      "id": "info_2",
+      "title": "经济观察：全球市场动态分析",
+      "summary": "最新经济数据显示，全球市场呈现复苏态势，投资者信心逐步恢复...",
+      "source": "财经网",
+      "time": "5小时前",
+      "url": "https://example.com/news/2"
+    },
+    {
+      "id": "info_3",
+      "title": "天气预报：未来三天天气趋势",
+      "summary": "气象部门发布最新天气预报，未来三天将迎来晴好天气...",
+      "source": "气象局",
+      "time": "1小时前",
+      "url": "https://example.com/news/3"
+    }
+  ]
+}
+

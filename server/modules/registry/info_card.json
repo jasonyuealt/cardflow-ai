@@ -1,0 +1,30 @@
+{
+  "identity": {
+    "id": "info_card",
+    "name": "信息搜索",
+    "description": "在线搜索当前信息、新闻、事实和实时数据，提供详细的搜索结果和来源",
+    "keywords": ["搜索", "信息", "新闻", "事实", "数据", "search", "information", "news"],
+    "usageScenarios": "用户需要搜索当前信息、时事新闻、历史事实或需要研究复杂主题时使用"
+  },
+  "layoutConfig": {
+    "layoutOptions": ["info-display"],
+    "defaultLayout": "info-display",
+    "layoutDescriptions": {
+      "info-display": "信息片段横向滑动展示，当前项显示完整标题和摘要，待看项显示简略标题"
+    }
+  },
+  "styleOptions": {
+    "cardStyle": ["elevated", "flat"],
+    "colorScheme": ["auto", "primary", "blue"],
+    "density": ["comfortable", "compact"]
+  },
+  "dataAdapter": "InfoCardAdapter",
+  "apis": {
+    "initial": "info/search",
+    "detail": "info/detail"
+  },
+  "interactions": {
+    "onItemClick": "detail"
+  }
+}
+

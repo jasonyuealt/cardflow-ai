@@ -1,0 +1,35 @@
+{
+  "delay": 300,
+  "response": {
+    "title": "上海三日游",
+    "days": [
+      {
+        "date": "2025-12-12",
+        "title": "Day 1: 抵达与外滩",
+        "activities": [
+          { "time": "14:00", "type": "flight", "title": "抵达浦东机场", "desc": "CA1836" },
+          { "time": "15:30", "type": "hotel", "title": "入住半岛酒店", "desc": "外滩景观房" },
+          { "time": "19:00", "type": "attraction", "title": "漫步外滩", "desc": "欣赏万国建筑群夜景" },
+          { "time": "20:30", "type": "dining", "title": "晚餐：老吉士", "desc": "本帮菜" }
+        ]
+      },
+      {
+        "date": "2025-12-13",
+        "title": "Day 2: 迪士尼奇幻日",
+        "activities": [
+          { "time": "09:00", "type": "attraction", "title": "上海迪士尼乐园", "desc": "全天游玩" },
+          { "time": "20:00", "type": "show", "title": "奇梦之光幻影秀", "desc": "烟花表演" }
+        ]
+      },
+      {
+        "date": "2025-12-14",
+        "title": "Day 3: 艺术与返程",
+        "activities": [
+          { "time": "10:00", "type": "art", "title": "西岸美术馆", "desc": "蓬皮杜中心典藏展" },
+          { "time": "14:00", "type": "flight", "title": "前往虹桥机场", "desc": "返程" }
+        ]
+      }
+    ]
+  }
+}
+

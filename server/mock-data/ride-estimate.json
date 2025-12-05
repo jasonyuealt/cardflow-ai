@@ -1,0 +1,41 @@
+{
+  "delay": 600,
+  "response": {
+    "origin": "当前位置",
+    "destination": "${params.destination}",
+    "distance": "15.8km",
+    "duration": "35分钟",
+    "mapImage": "https://source.unsplash.com/random/600x300/?map,route",
+    "options": [
+      {
+        "type": "快车",
+        "name": "经济型",
+        "price": 45,
+        "eta": "3分钟",
+        "icon": "🚗"
+      },
+      {
+        "type": "专车",
+        "name": "舒适型",
+        "price": 68,
+        "eta": "5分钟",
+        "icon": "🚙"
+      },
+      {
+        "type": "出租车",
+        "name": "出租车",
+        "price": 52,
+        "eta": "2分钟",
+        "icon": "🚕"
+      },
+      {
+        "type": "豪华车",
+        "name": "行政级",
+        "price": 128,
+        "eta": "8分钟",
+        "icon": "🚘"
+      }
+    ]
+  }
+}
+

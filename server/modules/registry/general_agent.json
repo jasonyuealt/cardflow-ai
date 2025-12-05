@@ -1,0 +1,32 @@
+{
+  "identity": {
+    "id": "general_agent",
+    "name": "应用控制",
+    "description": "访问和控制第三方应用程序和服务（Gmail、Google Maps、Google Calendar等26个预定义工作流程）",
+    "keywords": ["Gmail", "邮件", "日历", "地图", "Google Maps", "Google Calendar", "email"],
+    "usageScenarios": "用户需要操作Gmail邮件、使用Google地图导航、管理日历事件或使用其他第三方应用时使用"
+  },
+  "layoutConfig": {
+    "layoutOptions": ["interactive-action"],
+    "defaultLayout": "interactive-action",
+    "layoutDescriptions": {
+      "interactive-action": "操作列表横向滑动展示，当前项显示完整操作界面，待看项显示应用图标和名称"
+    }
+  },
+  "styleOptions": {
+    "cardStyle": ["elevated", "flat"],
+    "colorScheme": ["auto", "primary"],
+    "density": ["comfortable", "compact"]
+  },
+  "dataAdapter": "GeneralAgentAdapter",
+  "apis": {
+    "initial": "agent/getActions",
+    "execute": "agent/execute",
+    "getHistory": "agent/getHistory"
+  },
+  "interactions": {
+    "onItemClick": "execute",
+    "onHistory": "getHistory"
+  }
+}
+

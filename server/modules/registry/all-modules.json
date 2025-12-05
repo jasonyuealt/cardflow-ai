@@ -1,0 +1,96 @@
+{
+  "modules": [
+  {
+      "id": "flight",
+      "name": "航班搜索",
+      "description": "搜索航班，查看详情，预订机票",
+      "category": "horizontal_scrollable_list",
+      "keywords": ["机票", "航班", "飞机", "订票", "fly", "flight"]
+  },
+  {
+      "id": "shopping",
+      "name": "商品搜索",
+      "description": "搜索商品，提供价格对比和购买链接",
+      "category": "horizontal_scrollable_list",
+      "keywords": ["买", "购物", "商品", "shopping", "buy"]
+  },
+  {
+      "id": "yelp",
+      "name": "餐厅搜索",
+      "description": "搜索餐厅、咖啡馆等本地服务",
+      "category": "horizontal_scrollable_list",
+      "keywords": ["餐厅", "美食", "吃饭", "restaurant", "food"]
+  },
+  {
+      "id": "videos",
+      "name": "视频搜索",
+      "description": "搜索和播放视频内容",
+      "category": "horizontal_scrollable_list",
+      "keywords": ["视频", "播放", "观看", "video", "watch"]
+  },
+  {
+      "id": "images",
+      "name": "图片搜索",
+      "description": "搜索和查看图片",
+      "category": "horizontal_scrollable_list",
+      "keywords": ["图片", "照片", "image", "photo"]
+  },
+  {
+      "id": "info_card",
+      "name": "信息搜索",
+      "description": "在线搜索当前信息、新闻、事实和实时数据",
+      "category": "info_display",
+      "keywords": ["搜索", "信息", "新闻", "search", "information"]
+  },
+  {
+      "id": "line_general_agent",
+      "name": "消息对话",
+      "description": "通过Line、WhatsApp等消息应用与他人聊天",
+      "category": "interactive_action",
+      "keywords": ["聊天", "消息", "询问", "Line", "WhatsApp"]
+  },
+  {
+      "id": "general_agent",
+      "name": "应用控制",
+      "description": "访问和控制Gmail、Google Maps、Google Calendar等第三方应用",
+      "category": "interactive_action",
+      "keywords": ["Gmail", "邮件", "日历", "地图", "Google"]
+  },
+  {
+      "id": "orchestration_agent",
+      "name": "工作流程",
+      "description": "多步骤工作流程，结合多个来源的数据执行复杂操作",
+      "category": "interactive_action",
+      "keywords": ["编排", "工作流", "多步骤", "orchestration", "workflow"]
+  },
+  {
+      "id": "meeting_view",
+      "name": "会面地点",
+      "description": "基于用户和对方的位置推荐会面地点",
+      "category": "map_view_horizontal",
+      "keywords": ["地图", "位置", "会面", "约会", "见面"]
+    }
+  ],
+  "categories": {
+    "horizontal_scrollable_list": {
+      "name": "横向滑动列表卡片",
+      "description": "多个选项横向排列，当前项显示完整信息，待看项显示简略信息",
+      "count": 5
+  },
+    "info_display": {
+      "name": "信息展示卡片",
+      "description": "信息片段横向滑动展示",
+      "count": 1
+  },
+    "interactive_action": {
+      "name": "交互操作卡片",
+      "description": "操作选项或对话横向滑动",
+      "count": 3
+  },
+    "map_view_horizontal": {
+      "name": "横向滑动地图卡片",
+      "description": "地图和地点信息横向滑动展示",
+      "count": 1
+  }
+  }
+}

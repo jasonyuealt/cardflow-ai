@@ -1,0 +1,76 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "hotel_1",
+      "name": "上海外滩华尔道夫酒店",
+      "location": "上海 外滩",
+      "address": "中山东一路2号",
+      "stars": 5,
+      "rating": 4.8,
+      "reviews": 1256,
+      "price": 1280,
+      "currency": "CNY",
+      "image": "/images/hotel-1.jpg",
+      "facilities": ["免费WiFi", "游泳池", "健身房", "餐厅", "停车场"],
+      "distance": "距市中心 0.5km"
+    },
+    {
+      "id": "hotel_2",
+      "name": "上海浦东香格里拉大酒店",
+      "location": "上海 浦东",
+      "address": "富城路33号",
+      "stars": 5,
+      "rating": 4.7,
+      "reviews": 988,
+      "price": 980,
+      "currency": "CNY",
+      "image": "/images/hotel-2.jpg",
+      "facilities": ["免费WiFi", "游泳池", "健身房", "餐厅", "停车场", "SPA"],
+      "distance": "距市中心 8km"
+    },
+    {
+      "id": "hotel_3",
+      "name": "上海静安瑞吉酒店",
+      "location": "上海 静安",
+      "address": "北京西路1008号",
+      "stars": 5,
+      "rating": 4.6,
+      "reviews": 756,
+      "price": 1180,
+      "currency": "CNY",
+      "image": "/images/hotel-3.jpg",
+      "facilities": ["免费WiFi", "健身房", "餐厅", "停车场"],
+      "distance": "距市中心 2km"
+    },
+    {
+      "id": "hotel_4",
+      "name": "上海虹桥锦江大酒店",
+      "location": "上海 虹桥",
+      "address": "虹桥路1591号",
+      "stars": 4,
+      "rating": 4.3,
+      "reviews": 523,
+      "price": 580,
+      "currency": "CNY",
+      "image": "/images/hotel-4.jpg",
+      "facilities": ["免费WiFi", "餐厅", "停车场"],
+      "distance": "距市中心 12km"
+    },
+    {
+      "id": "hotel_5",
+      "name": "上海南京路和颐酒店",
+      "location": "上海 黄浦",
+      "address": "南京东路480号",
+      "stars": 4,
+      "rating": 4.5,
+      "reviews": 892,
+      "price": 480,
+      "currency": "CNY",
+      "image": "/images/hotel-5.jpg",
+      "facilities": ["免费WiFi", "餐厅"],
+      "distance": "距市中心 1km"
+    }
+  ]
+}
+

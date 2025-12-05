@@ -1,0 +1,50 @@
+{
+  "delay": 300,
+  "response": {
+    "id": "${params.hotelId}",
+    "name": "上海外滩华尔道夫酒店",
+    "location": "上海 外滩",
+    "address": "中山东一路2号",
+    "stars": 5,
+    "rating": 4.8,
+    "reviews": 1256,
+    "description": "位于外滩黄金地段，可俯瞰黄浦江美景。酒店由两座历史建筑改建而成，融合了新古典主义和装饰艺术风格。",
+    "facilities": [
+      "免费WiFi",
+      "游泳池",
+      "健身房",
+      "餐厅",
+      "停车场",
+      "SPA",
+      "商务中心",
+      "礼宾服务"
+    ],
+    "rooms": [
+      {
+        "type": "豪华房",
+        "size": "35㎡",
+        "bed": "大床",
+        "price": 1280,
+        "amenities": ["免费WiFi", "保险箱", "迷你吧", "浴缸"]
+      },
+      {
+        "type": "行政套房",
+        "size": "60㎡",
+        "bed": "大床",
+        "price": 2180,
+        "amenities": ["免费WiFi", "保险箱", "迷你吧", "浴缸", "客厅"]
+      }
+    ],
+    "policies": {
+      "checkIn": "15:00",
+      "checkOut": "12:00",
+      "cancellation": "入住前24小时可免费取消"
+    },
+    "nearbyAttractions": [
+      "外滩 - 步行5分钟",
+      "南京路 - 步行10分钟",
+      "豫园 - 车程10分钟"
+    ]
+  }
+}
+

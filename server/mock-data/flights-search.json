@@ -1,0 +1,81 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "flight_1",
+      "flightNumber": "CZ3001",
+      "airline": "南方航空",
+      "from": "北京",
+      "to": "上海",
+      "departure": "08:00",
+      "arrival": "10:30",
+      "duration": "2h30m",
+      "price": 580,
+      "seats": 120,
+      "class": "经济舱",
+      "aircraft": "空客A320",
+      "isSpecialOffer": false
+    },
+    {
+      "id": "flight_2",
+      "flightNumber": "MU5001",
+      "airline": "东方航空",
+      "from": "北京",
+      "to": "上海",
+      "departure": "09:30",
+      "arrival": "12:00",
+      "duration": "2h30m",
+      "price": 620,
+      "seats": 85,
+      "class": "经济舱",
+      "aircraft": "波音737",
+      "isSpecialOffer": false
+    },
+    {
+      "id": "flight_3",
+      "flightNumber": "CA1501",
+      "airline": "中国国航",
+      "from": "北京",
+      "to": "上海",
+      "departure": "11:00",
+      "arrival": "13:30",
+      "duration": "2h30m",
+      "price": 890,
+      "seats": 200,
+      "class": "经济舱",
+      "aircraft": "波音777",
+      "isSpecialOffer": false
+    },
+    {
+      "id": "flight_4",
+      "flightNumber": "HU7123",
+      "airline": "海南航空",
+      "from": "北京",
+      "to": "上海",
+      "departure": "14:15",
+      "arrival": "16:45",
+      "duration": "2h30m",
+      "price": 450,
+      "seats": 60,
+      "class": "经济舱",
+      "aircraft": "空客A321",
+      "isSpecialOffer": true
+    },
+    {
+      "id": "flight_5",
+      "flightNumber": "3U8888",
+      "airline": "四川航空",
+      "from": "北京",
+      "to": "上海",
+      "departure": "17:00",
+      "arrival": "19:30",
+      "duration": "2h30m",
+      "price": 520,
+      "seats": 150,
+      "class": "经济舱",
+      "aircraft": "空客A330",
+      "isSpecialOffer": false
+    }
+  ]
+}
+

@@ -1,0 +1,30 @@
+{
+  "identity": {
+    "id": "meeting_view",
+    "name": "会面地点",
+    "description": "基于用户和对方的位置，可视化并帮助用户选择合理的会面/约会地点",
+    "keywords": ["地图", "位置", "会面", "约会", "见面", "中间点", "meeting", "date"],
+    "usageScenarios": "用户想与另一个人计划会面或约会，需要选择合适的会面地点时使用"
+  },
+  "layoutConfig": {
+    "layoutOptions": ["map-view-horizontal"],
+    "defaultLayout": "map-view-horizontal",
+    "layoutDescriptions": {
+      "map-view-horizontal": "推荐地点横向滑动展示，当前项显示完整地图和地点信息，待看项显示地图缩略图和距离"
+    }
+  },
+  "styleOptions": {
+    "cardStyle": ["elevated"],
+    "colorScheme": ["auto", "primary"],
+    "density": ["comfortable", "spacious"]
+  },
+  "dataAdapter": "MeetingViewAdapter",
+  "apis": {
+    "initial": "meeting/getRecommendations",
+    "detail": "meeting/getPlaceDetail"
+  },
+  "interactions": {
+    "onItemClick": "detail",
+    "onNavigate": "meeting/navigate"
+  }
+}

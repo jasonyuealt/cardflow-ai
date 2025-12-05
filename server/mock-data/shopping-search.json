@@ -1,0 +1,30 @@
+{
+  "delay": 400,
+  "response": [
+    {
+      "id": "shop_1",
+      "name": "国际饭店蝴蝶酥",
+      "price": "¥68",
+      "image": "https://source.unsplash.com/random/300x300/?cookie,pastry",
+      "source": "老字号",
+      "tags": ["伴手礼", "必买", "排队王"]
+    },
+    {
+      "id": "shop_2",
+      "name": "大白兔奶糖礼盒",
+      "price": "¥35",
+      "image": "https://source.unsplash.com/random/300x300/?candy,gift",
+      "source": "特产店",
+      "tags": ["童年回忆", "经典"]
+    },
+    {
+      "id": "shop_3",
+      "name": "上海故事丝巾",
+      "price": "¥198",
+      "image": "https://source.unsplash.com/random/300x300/?scarf,silk",
+      "source": "专卖店",
+      "tags": ["送长辈", "精致"]
+    }
+  ]
+}
+

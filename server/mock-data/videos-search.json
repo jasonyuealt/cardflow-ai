@@ -1,0 +1,36 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "video_1",
+      "title": "精彩视频推荐",
+      "name": "精彩视频推荐",
+      "description": "这是一个精彩的视频内容",
+      "thumbnail": "https://via.placeholder.com/400x200",
+      "duration": "10:30",
+      "views": "1.2M",
+      "channel": "视频频道"
+    },
+    {
+      "id": "video_2",
+      "title": "热门视频",
+      "name": "热门视频",
+      "description": "热门视频内容",
+      "thumbnail": "https://via.placeholder.com/400x200",
+      "duration": "05:45",
+      "views": "800K",
+      "channel": "热门频道"
+    },
+    {
+      "id": "video_3",
+      "title": "推荐视频",
+      "name": "推荐视频",
+      "description": "推荐的视频内容",
+      "thumbnail": "https://via.placeholder.com/400x200",
+      "duration": "15:20",
+      "views": "500K",
+      "channel": "推荐频道"
+    }
+  ]
+}
+

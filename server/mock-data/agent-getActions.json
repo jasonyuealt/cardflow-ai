@@ -1,0 +1,27 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "action_1",
+      "name": "Gmail",
+      "icon": "📧",
+      "description": "查看最近邮件",
+      "action": "查看邮件"
+    },
+    {
+      "id": "action_2",
+      "name": "Google Maps",
+      "icon": "🗺️",
+      "description": "搜索地点和导航",
+      "action": "打开地图"
+    },
+    {
+      "id": "action_3",
+      "name": "Google Calendar",
+      "icon": "📅",
+      "description": "管理日程安排",
+      "action": "查看日历"
+    }
+  ]
+}
+

@@ -1,0 +1,42 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "restaurant_1",
+      "title": "川味轩餐厅",
+      "name": "川味轩餐厅",
+      "description": "地道川菜，麻辣鲜香",
+      "rating": 4.8,
+      "price": "¥80/人",
+      "cuisine": "川菜",
+      "address": "海淀区中关村大街",
+      "hours": "10:00-22:00",
+      "image": "https://via.placeholder.com/400x200"
+    },
+    {
+      "id": "restaurant_2",
+      "title": "江南小厨",
+      "name": "江南小厨",
+      "description": "精致江浙菜",
+      "rating": 4.6,
+      "price": "¥120/人",
+      "cuisine": "江浙菜",
+      "address": "朝阳区三里屯",
+      "hours": "11:00-21:00",
+      "image": "https://via.placeholder.com/400x200"
+    },
+    {
+      "id": "restaurant_3",
+      "title": "北京烤鸭店",
+      "name": "北京烤鸭店",
+      "description": "传统北京烤鸭",
+      "rating": 4.9,
+      "price": "¥150/人",
+      "cuisine": "北京菜",
+      "address": "东城区王府井",
+      "hours": "10:30-22:00",
+      "image": "https://via.placeholder.com/400x200"
+    }
+  ]
+}
+

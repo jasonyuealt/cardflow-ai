@@ -1,0 +1,36 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "image_1",
+      "title": "精美图片",
+      "name": "精美图片",
+      "description": "高清精美图片",
+      "url": "https://via.placeholder.com/800x600",
+      "thumbnail": "https://via.placeholder.com/200x150",
+      "source": "Unsplash",
+      "size": "1920x1080"
+    },
+    {
+      "id": "image_2",
+      "title": "风景照片",
+      "name": "风景照片",
+      "description": "美丽的风景照片",
+      "url": "https://via.placeholder.com/800x600",
+      "thumbnail": "https://via.placeholder.com/200x150",
+      "source": "Pexels",
+      "size": "1920x1080"
+    },
+    {
+      "id": "image_3",
+      "title": "城市夜景",
+      "name": "城市夜景",
+      "description": "城市夜景图片",
+      "url": "https://via.placeholder.com/800x600",
+      "thumbnail": "https://via.placeholder.com/200x150",
+      "source": "Pixabay",
+      "size": "1920x1080"
+    }
+  ]
+}
+

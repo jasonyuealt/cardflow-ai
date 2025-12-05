@@ -1,0 +1,32 @@
+{
+  "identity": {
+    "id": "orchestration_agent",
+    "name": "工作流程",
+    "description": "多步骤工作流程，结合多个来源的数据，访问用户信息，启动应用程序，按顺序执行复杂操作",
+    "keywords": ["编排", "工作流", "多步骤", "orchestration", "workflow", "automation"],
+    "usageScenarios": "用户需要执行复杂的多步骤工作流程、访问个人信息或使用未被其他Agent涵盖的应用程序时使用"
+  },
+  "layoutConfig": {
+    "layoutOptions": ["interactive-action"],
+    "defaultLayout": "interactive-action",
+    "layoutDescriptions": {
+      "interactive-action": "工作流横向滑动展示，当前项显示完整步骤和进度，待看项显示工作流名称"
+    }
+  },
+  "styleOptions": {
+    "cardStyle": ["elevated", "outlined"],
+    "colorScheme": ["auto", "primary", "blue"],
+    "density": ["comfortable", "spacious"]
+  },
+  "dataAdapter": "OrchestrationAgentAdapter",
+  "apis": {
+    "initial": "orchestration/getWorkflows",
+    "execute": "orchestration/execute",
+    "getStatus": "orchestration/getStatus"
+  },
+  "interactions": {
+    "onItemClick": "execute",
+    "onStatus": "getStatus"
+  }
+}
+
