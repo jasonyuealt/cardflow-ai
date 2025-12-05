@@ -21,8 +21,11 @@ export class VectorRetriever {
     // 按分数排序
     scored.sort((a, b) => b.score - a.score);
 
+    // 过滤掉分数为0的模块
+    const filtered = scored.filter(item => item.score > 0);
+
     // 返回 top-K 个最相关的模块
-    const results = scored.slice(0, topK).map(item => item.module);
+    const results = filtered.slice(0, topK).map(item => item.module);
     
     console.log(`   找到 ${results.length} 个相关模块:`, results.map(m => m.id).join(', '));
     
@@ -70,80 +73,55 @@ export class VectorRetriever {
 
     // 定义模块间的语义关联
     const semanticRules: Record<string, { triggers: string[]; bonus: number }> = {
-      // 机票相关
-      flight_search: {
-        triggers: ['机票', '航班', '飞机', '订票', '飞', '出差', '旅行', '去'],
+      // 航班
+      flight: {
+        triggers: ['机票', '航班', '飞机', '订票', '飞', '出差', '旅行', '去', 'fly', 'flight', 'travel'],
         bonus: 8,
-      },
-      // 酒店
-      hotel_search: {
-        triggers: ['机票', '航班', '飞机', '旅行', '出差', '去', '酒店', '住宿', '订房'],
-        bonus: queryLower.match(/机票|航班|飞机/) ? 3 : 8,
-      },
-      // 天气
-      weather_info: {
-        triggers: ['机票', '航班', '去', '旅行', '天气', '气温', '出门', '玩'],
-        bonus: queryLower.match(/机票|航班/) ? 2 : 8,
-      },
-      // 景点
-      attraction_guide: {
-        triggers: ['玩', '逛', '旅行', '去', '景点', '攻略', '行程'],
-        bonus: queryLower.match(/机票|酒店/) ? 4 : 8,
-      },
-      // 打车
-      ride_hailing: {
-        triggers: ['去', '怎么走', '打车', '接机', '送机', '路线', '交通'],
-        bonus: 5,
-      },
-      // 美食
-      restaurant_finder: {
-        triggers: ['吃', '饿', '餐', '美食', '饭', '附近'],
-        bonus: 6,
-      },
-      // 汇率
-      currency_converter: {
-        triggers: ['美元', '欧元', '日元', '汇率', '换算', '钱', '出国'],
-        bonus: 7,
-      },
-      // 活动
-      event_ticket: {
-        triggers: ['周末', '活动', '展览', '演出', '票', '玩'],
-        bonus: 5,
-      },
-      // 行程
-      schedule: {
-        triggers: ['行程', '日程', '安排', '计划', 'timeline', 'day1'],
-        bonus: 9,
       },
       // 购物
       shopping: {
-        triggers: ['买', '购物', '特产', '装备', '商品', '带点'],
+        triggers: ['买', '购物', '特产', '装备', '商品', '带点', '价格', '多少钱', 'buy', 'shop', 'price', 'cost'],
         bonus: 7,
       },
-      // 地图
-      map_view: {
-        triggers: ['地图', '位置', '在哪里', '分布', '导航', '定位'],
-        bonus: 6,
-      },
-      // 灵感
-      idea_guide: {
-        triggers: ['攻略', '灵感', '推荐', '去哪玩', '什么好玩', '指南'],
-        bonus: 6,
-      },
-      // 分享
-      share_card: {
-        triggers: ['分享', '发给', '转发', '告诉', '截图'],
+      // 餐厅/美食
+      yelp: {
+        triggers: ['吃', '饿', '餐', '美食', '饭', '附近', 'cafe', 'bar', 'drink', 'eat', 'food', 'restaurant'],
         bonus: 8,
       },
-      // 网页
-      web_widget: {
-        triggers: ['官网', '打开', '链接', '查看'],
-        bonus: 5,
+      // 视频
+      videos: {
+        triggers: ['视频', '播放', '观看', '看', 'video', 'watch', 'play'],
+        bonus: 7,
       },
-      // 完成
-      completion: {
-        triggers: ['完成', '搞定', '预订成功', '支付成功'],
-        bonus: 10,
+      // 图片
+      images: {
+        triggers: ['图片', '照片', '图', '相片', 'image', 'photo', 'picture'],
+        bonus: 7,
+      },
+      // 信息/百科/天气
+      info_card: {
+        triggers: ['搜索', '查询', '天气', '气温', '汇率', '新闻', '是谁', '什么', 'search', 'info', 'weather', 'news'],
+        bonus: 6,
+      },
+      // 聊天
+      line_general_agent: {
+        triggers: ['聊天', '消息', '询问', 'Line', 'WhatsApp', '问一下', '联系', 'chat', 'message', 'ask'],
+        bonus: 8,
+      },
+      // 应用控制
+      general_agent: {
+        triggers: ['邮件', '日历', '地图', 'Gmail', 'Calendar', 'Maps', 'google', '发邮件', 'email'],
+        bonus: 7,
+      },
+      // 工作流
+      orchestration_agent: {
+        triggers: ['编排', '工作流', '多步骤', '安排', '计划', 'workflow', 'arrange', 'plan'],
+        bonus: 6,
+      },
+      // 会面地图
+      meeting_view: {
+        triggers: ['地图', '位置', '会面', '约会', '见面', '哪里见', 'meet', 'date', 'location'],
+        bonus: 8,
       }
     };
 
@@ -158,50 +136,4 @@ export class VectorRetriever {
 
     return 0;
   }
-
-  /**
-   * 检查是否应该推荐相关模块
-   */
-  shouldRecommendRelated(query: string): boolean {
-    const queryLower = query.toLowerCase();
-    
-    // 如果用户明确只要一个东西，不推荐
-    if (/只|仅|单独|只要/.test(queryLower)) {
-      return false;
-    }
-
-    // 如果是旅行相关，推荐关联模块
-    if (/机票|航班|飞机|去.*旅行|出差/.test(queryLower)) {
-      return true;
-    }
-
-    return false;
-  }
-
-  /**
-   * 获取相关模块（根据主模块推荐）
-   */
-  getRelatedModules(primaryModuleId: string, allModules: ModuleSummary[]): ModuleSummary[] {
-    const relatedMap: Record<string, string[]> = {
-      flight_search: ['hotel_search', 'attraction_guide', 'ride_hailing', 'weather_info', 'currency_converter'],
-      hotel_search: ['attraction_guide', 'restaurant_finder', 'ride_hailing', 'weather_info'],
-      attraction_guide: ['restaurant_finder', 'ride_hailing', 'hotel_search', 'map_view', 'idea_guide'],
-      event_ticket: ['restaurant_finder', 'ride_hailing', 'share_card'],
-      restaurant_finder: ['ride_hailing', 'event_ticket', 'map_view'],
-      weather_info: [],
-      ride_hailing: ['map_view'],
-      currency_converter: [],
-      schedule: ['map_view', 'share_card', 'weather_info'],
-      shopping: ['currency_converter'],
-      idea_guide: ['flight_search', 'hotel_search', 'attraction_guide'],
-      map_view: ['ride_hailing'],
-      completion: ['share_card', 'schedule'],
-      share_card: [],
-      web_widget: []
-    };
-
-    const relatedIds = relatedMap[primaryModuleId] || [];
-    return allModules.filter(m => relatedIds.includes(m.id));
-  }
 }
-

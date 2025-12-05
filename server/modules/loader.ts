@@ -5,7 +5,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { ModuleSummary, ModuleDefinition } from '../../shared/types';
+import { ModuleSummary, ModuleDefinition, ModuleIdentity } from '../../shared/types';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,10 +28,15 @@ export class ModuleLoader {
       const content = fs.readFileSync(summariesPath, 'utf-8');
       const data = JSON.parse(content);
       
-      // 支持新的格式：{ modules: [...], categories: {...} }
       const modules = data.modules || data;
       
-      return modules.map((s: any) => new ModuleSummary(s.id, s.name, s.description, s.keywords));
+      return modules.map((s: any) => new ModuleSummary(
+        s.id, 
+        s.name, 
+        s.description, 
+        s.keywords,
+        s.recommendedLayout
+      ));
     } catch (error: any) {
       console.error('加载模块摘要失败:', error.message);
       return [];
@@ -50,10 +55,24 @@ export class ModuleLoader {
     try {
       const modulePath = path.join(this.registryPath, `${moduleId}.json`);
       const content = fs.readFileSync(modulePath, 'utf-8');
-      const moduleData = JSON.parse(content);
+      const json = JSON.parse(content);
 
-      // 简化：直接返回 JSON 数据，实际应该转换为类实例
-      const module = moduleData as ModuleDefinition;
+      // 构建 ModuleDefinition 实例
+      // 注意：我们的 JSON 文件结构可能与类的构造函数不完全一一对应，这里手动映射
+      const identity = new ModuleIdentity(
+        json.id,
+        json.name,
+        json.description,
+        json.keywords
+      );
+
+      // APIs 的处理，目前保持原样，或者转换 ApiDefinition
+      // 假设 apis 是 Record<string, ApiDefinition>
+      const module = new ModuleDefinition(
+        identity,
+        json.recommendedLayout,
+        json.apis
+      );
 
       // 缓存
       this.modulesCache.set(moduleId, module);
@@ -81,4 +100,3 @@ export class ModuleLoader {
     return modules;
   }
 }
-

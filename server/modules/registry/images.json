@@ -1,31 +1,17 @@
 {
-  "identity": {
-    "id": "images",
-    "name": "图片搜索",
-    "description": "搜索和查看图片，支持多个图片来源",
-    "keywords": ["图片", "照片", "图像", "image", "photo", "picture"],
-    "usageScenarios": "用户需要搜索或查看图片时使用"
-  },
-  "layoutConfig": {
-    "layoutOptions": ["horizontal-scrollable-list"],
-    "defaultLayout": "horizontal-scrollable-list",
-    "layoutDescriptions": {
-      "horizontal-scrollable-list": "图片横向滑动展示，当前项显示完整大图，待看项显示缩略图"
-    }
-  },
-  "styleOptions": {
-    "cardStyle": ["flat", "elevated"],
-    "colorScheme": ["auto", "primary"],
-    "density": ["comfortable", "spacious"]
-  },
-  "dataAdapter": "ImagesAdapter",
+  "id": "images",
+  "name": "图片搜索",
+  "description": "搜索和查看图片，支持多个图片来源",
+  "keywords": ["图片", "照片", "图像", "image", "photo", "picture"],
+  "recommendedLayout": "horizontal-scrollable-list",
   "apis": {
-    "initial": "images/search",
-    "detail": "images/detail"
-  },
-  "interactions": {
-    "onItemClick": "detail",
-    "onDownload": "images/download"
+    "search": {
+      "endpoint": "/api/images/search",
+      "method": "POST",
+      "description": "搜索图片",
+      "parameters": {
+        "query": "搜索关键词"
+      }
+    }
   }
 }
-

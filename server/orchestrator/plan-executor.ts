@@ -2,17 +2,20 @@
  * 执行计划执行器
  */
 
-import { ExecutionPlan, ModuleInstance, GeneratePlanResponse } from '../../shared/types';
+import { ExecutionPlan, ModuleInstance } from '../../shared/types';
 import { APIExecutor } from './api-executor';
 import { ModuleLoader } from '../modules/loader';
+import { AIExecutor } from '../ai/executor';
 
 export class PlanExecutor {
   private apiExecutor: APIExecutor;
   private moduleLoader: ModuleLoader;
+  private aiExecutor: AIExecutor;
 
   constructor() {
     this.apiExecutor = new APIExecutor();
     this.moduleLoader = new ModuleLoader();
+    this.aiExecutor = new AIExecutor();
   }
 
   /**
@@ -28,7 +31,7 @@ export class PlanExecutor {
     const moduleIds = plan.modules.map(m => m.moduleId);
     const moduleDefinitions = this.moduleLoader.loadModuleDefinitions(moduleIds);
 
-    // 并行执行所有模块的初始 API
+    // 串行执行所有模块（为了更好的日志和流程控制，虽然并行更快）
     for (const moduleConfig of plan.modules) {
       try {
         // 加载模块定义
@@ -38,14 +41,26 @@ export class PlanExecutor {
           continue;
         }
 
-        // 执行初始 API
+        // 1. 执行初始 API 获取 Raw Data
         console.log(`   加载模块: ${moduleConfig.moduleId}`);
+        console.log(`   调用 API: ${moduleConfig.initialApi.apiId}`);
+        
         const apiResponse = await this.apiExecutor.execute(moduleConfig.initialApi);
 
         if (!apiResponse.success) {
           console.error(`   API 执行失败: ${moduleConfig.initialApi.apiId}`);
           continue;
         }
+
+        const rawData = apiResponse.data;
+        console.log(`   Raw Data 获取成功，记录数: ${Array.isArray(rawData) ? rawData.length : 'Object'}`);
+
+        // 2. 调用 Mapper AI 转换数据
+        const targetLayout = moduleConfig.style.layout;
+        console.log(`   调用 Mapper AI 转换数据 (Target: ${targetLayout})...`);
+        
+        const uiData = await this.aiExecutor.mapToUI(rawData, targetLayout);
+        console.log(`   UI Data 转换成功`);
 
         // 创建模块实例
         const instance = new ModuleInstance(
@@ -54,7 +69,7 @@ export class PlanExecutor {
           moduleConfig.priority,
           moduleConfig.defaultExpanded,
           moduleConfig.style,
-          apiResponse.data, // 初始数据
+          uiData, // 使用转换后的数据
           moduleDef,
           moduleConfig.interactionApis,
           moduleConfig.defaultExpanded,
@@ -87,11 +102,7 @@ export class PlanExecutor {
   ): Promise<any> {
     console.log(`🖱️  执行交互: ${instanceId} - ${action}`);
 
-    // 这里需要从某个地方获取模块实例的交互 API 配置
-    // 简化实现：直接构造 API 调用
-    // 实际应该从缓存或状态中获取
-
+    // 这里的实现也应该经过 Mapper，但暂时保持简单
     return { success: true, message: '交互执行成功（简化实现）' };
   }
 }
-

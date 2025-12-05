@@ -1,30 +1,17 @@
 {
-  "identity": {
-    "id": "meeting_view",
-    "name": "会面推荐",
-    "description": "推荐附近适合会面的地点，支持地图展示和横向滑动查看",
-    "keywords": ["会面", "见面", "约会", "地点", "推荐", "meeting", "meet"],
-    "usageScenarios": "用户需要找地方见面、约会时使用，可推荐咖啡厅、餐厅等地点"
-  },
-  "layoutConfig": {
-    "layoutOptions": ["map-view-horizontal"],
-    "defaultLayout": "map-view-horizontal",
-    "layoutDescriptions": {
-      "map-view-horizontal": "地图+横向滑动卡片，当前项显示地点详情，待看项显示地点名称和距离"
-    }
-  },
-  "styleOptions": {
-    "cardStyle": ["elevated", "flat", "outlined"],
-    "colorScheme": ["auto", "green", "primary"],
-    "density": ["comfortable", "compact", "spacious"]
-  },
-  "dataAdapter": "MeetingAdapter",
+  "id": "meeting_view",
+  "name": "会面推荐",
+  "description": "推荐附近适合会面的地点，支持地图展示和横向滑动查看",
+  "keywords": ["会面", "见面", "约会", "地点", "推荐", "meeting", "meet"],
+  "recommendedLayout": "map-view-horizontal",
   "apis": {
-    "initial": "meeting/getRecommendations",
-    "detail": "meeting/detail"
-  },
-  "interactions": {
-    "onItemClick": "detail"
+    "getRecommendations": {
+      "endpoint": "/api/meeting/recommendations",
+      "method": "POST",
+      "description": "获取推荐地点",
+      "parameters": {
+        "location": "位置（可选）"
+      }
+    }
   }
 }
-

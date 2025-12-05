@@ -1,32 +1,17 @@
 {
-  "identity": {
-    "id": "videos",
-    "name": "视频搜索",
-    "description": "搜索和播放视频内容，支持多个视频平台",
-    "keywords": ["视频", "播放", "观看", "video", "watch", "play"],
-    "usageScenarios": "用户需要搜索或观看视频内容时使用"
-  },
-  "layoutConfig": {
-    "layoutOptions": ["horizontal-scrollable-list"],
-    "defaultLayout": "horizontal-scrollable-list",
-    "layoutDescriptions": {
-      "horizontal-scrollable-list": "视频横向滑动展示，当前项显示完整视频信息和预览图，待看项显示缩略图和标题"
-    }
-  },
-  "styleOptions": {
-    "cardStyle": ["elevated", "flat"],
-    "colorScheme": ["auto", "red", "primary"],
-    "density": ["comfortable", "compact"]
-  },
-  "dataAdapter": "VideosAdapter",
+  "id": "videos",
+  "name": "视频搜索",
+  "description": "搜索和播放视频内容，支持多个视频平台",
+  "keywords": ["视频", "播放", "观看", "video", "watch", "play"],
+  "recommendedLayout": "horizontal-scrollable-list",
   "apis": {
-    "initial": "videos/search",
-    "detail": "videos/detail",
-    "play": "videos/play"
-  },
-  "interactions": {
-    "onItemClick": "play",
-    "onDetails": "detail"
+    "search": {
+      "endpoint": "/api/videos/search",
+      "method": "POST",
+      "description": "搜索视频",
+      "parameters": {
+        "query": "搜索关键词"
+      }
+    }
   }
 }
-

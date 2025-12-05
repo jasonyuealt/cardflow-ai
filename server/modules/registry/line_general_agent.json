@@ -1,32 +1,15 @@
 {
-  "identity": {
-    "id": "line_general_agent",
-    "name": "消息对话",
-    "description": "与朋友/他人通过Line、WhatsApp等消息应用聊天，确认或询问具体事项",
-    "keywords": ["聊天", "消息", "询问", "ask", "tell", "check with", "Line", "WhatsApp"],
-    "usageScenarios": "用户需要向他人发送消息、询问信息或确认事项时使用"
-  },
-  "layoutConfig": {
-    "layoutOptions": ["interactive-action"],
-    "defaultLayout": "interactive-action",
-    "layoutDescriptions": {
-      "interactive-action": "对话列表横向滑动展示，当前项显示完整聊天界面，待看项显示联系人头像和名称"
-    }
-  },
-  "styleOptions": {
-    "cardStyle": ["elevated", "outlined"],
-    "colorScheme": ["auto", "green", "primary"],
-    "density": ["comfortable"]
-  },
-  "dataAdapter": "LineAgentAdapter",
+  "id": "line_general_agent",
+  "name": "消息对话",
+  "description": "与朋友/他人通过Line、WhatsApp等消息应用聊天，确认或询问具体事项",
+  "keywords": ["聊天", "消息", "询问", "ask", "tell", "check with", "Line", "WhatsApp"],
+  "recommendedLayout": "interactive-action",
   "apis": {
-    "initial": "line/getContacts",
-    "sendMessage": "line/sendMessage",
-    "getHistory": "line/getHistory"
-  },
-  "interactions": {
-    "onItemClick": "getHistory",
-    "onSend": "sendMessage"
+    "getContacts": {
+      "endpoint": "/api/line/contacts",
+      "method": "POST",
+      "description": "获取联系人列表",
+      "parameters": {}
+    }
   }
 }
-

@@ -2,7 +2,7 @@
  * 模块相关类型定义
  */
 
-import { LayoutType, ModuleStyleConfig, StyleOptions } from './style';
+import { LayoutType, ModuleStyleConfig } from './style';
 import { ApiDefinition, ApiCallConfig } from './api';
 
 // 模块基本信息
@@ -11,75 +11,34 @@ export class ModuleIdentity {
   name: string;
   description: string;
   keywords: string[];
-  usageScenarios: string;
 
   constructor(
     id: string,
     name: string,
     description: string,
-    keywords: string[] = [],
-    usageScenarios: string = ''
+    keywords: string[] = []
   ) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.keywords = keywords;
-    this.usageScenarios = usageScenarios;
-  }
-}
-
-// 布局配置
-export class LayoutConfig {
-  layoutOptions: LayoutType[];
-  defaultLayout: LayoutType;
-  layoutDescriptions: Record<string, string>;
-
-  constructor(
-    layoutOptions: LayoutType[] = ['list-detail'],
-    defaultLayout: LayoutType = 'list-detail',
-    layoutDescriptions: Record<string, string> = {}
-  ) {
-    this.layoutOptions = layoutOptions;
-    this.defaultLayout = defaultLayout;
-    this.layoutDescriptions = layoutDescriptions;
-  }
-}
-
-// 交互配置
-export class InteractionConfig {
-  onItemClick?: string;
-  onBookClick?: string;
-  onSubmit?: string;
-  [key: string]: string | undefined;
-
-  constructor(config: Record<string, string> = {}) {
-    Object.assign(this, config);
   }
 }
 
 // 模块完整定义
 export class ModuleDefinition {
   identity: ModuleIdentity;
-  layoutConfig: LayoutConfig;
-  styleOptions: StyleOptions;
-  dataAdapter: string;
-  apis: Record<string, string>;
-  interactions: InteractionConfig;
+  recommendedLayout: LayoutType;
+  apis: Record<string, ApiDefinition>;
 
   constructor(
     identity: ModuleIdentity,
-    layoutConfig: LayoutConfig,
-    styleOptions: StyleOptions,
-    dataAdapter: string,
-    apis: Record<string, string> = {},
-    interactions: InteractionConfig = new InteractionConfig()
+    recommendedLayout: LayoutType,
+    apis: Record<string, ApiDefinition> = {}
   ) {
     this.identity = identity;
-    this.layoutConfig = layoutConfig;
-    this.styleOptions = styleOptions;
-    this.dataAdapter = dataAdapter;
+    this.recommendedLayout = recommendedLayout;
     this.apis = apis;
-    this.interactions = interactions;
   }
 }
 
@@ -89,12 +48,14 @@ export class ModuleSummary {
   name: string;
   description: string;
   keywords: string[];
+  recommendedLayout: LayoutType;
 
-  constructor(id: string, name: string, description: string, keywords: string[] = []) {
+  constructor(id: string, name: string, description: string, keywords: string[] = [], recommendedLayout: LayoutType) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.keywords = keywords;
+    this.recommendedLayout = recommendedLayout;
   }
 
   static fromModuleDefinition(module: ModuleDefinition): ModuleSummary {
@@ -102,7 +63,8 @@ export class ModuleSummary {
       module.identity.id,
       module.identity.name,
       module.identity.description,
-      module.identity.keywords
+      module.identity.keywords,
+      module.recommendedLayout
     );
   }
 }
@@ -150,4 +112,3 @@ export class ModuleInstance {
     this.reason = reason;
   }
 }
-

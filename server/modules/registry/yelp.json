@@ -1,31 +1,18 @@
 {
-  "identity": {
-    "id": "yelp",
-    "name": "餐厅搜索",
-    "description": "搜索餐厅、咖啡馆、酒吧等本地服务，查看评分、菜系、营业时间",
-    "keywords": ["餐厅", "美食", "吃饭", "restaurant", "food", "dining", "eat", "lunch", "dinner"],
-    "usageScenarios": "用户需要查找餐厅、咖啡馆或其他餐饮服务时使用"
-  },
-  "layoutConfig": {
-    "layoutOptions": ["horizontal-scrollable-list"],
-    "defaultLayout": "horizontal-scrollable-list",
-    "layoutDescriptions": {
-      "horizontal-scrollable-list": "餐厅横向滑动展示，当前项显示完整餐厅信息和图片，待看项显示名称和评分"
-    }
-  },
-  "styleOptions": {
-    "cardStyle": ["elevated", "flat"],
-    "colorScheme": ["auto", "red", "primary"],
-    "density": ["comfortable", "compact"]
-  },
-  "dataAdapter": "YelpAdapter",
+  "id": "yelp",
+  "name": "餐厅搜索",
+  "description": "搜索餐厅、咖啡馆、酒吧等本地服务，查看评分、菜系、营业时间",
+  "keywords": ["餐厅", "美食", "吃饭", "restaurant", "food", "dining", "eat", "lunch", "dinner"],
+  "recommendedLayout": "horizontal-scrollable-list",
   "apis": {
-    "initial": "yelp/search",
-    "detail": "yelp/detail"
-  },
-  "interactions": {
-    "onItemClick": "detail",
-    "onReserve": "yelp/reserve"
+    "search": {
+      "endpoint": "/api/yelp/search",
+      "method": "POST",
+      "description": "搜索餐厅",
+      "parameters": {
+        "query": "搜索关键词（如美食类型）",
+        "location": "位置或城市"
+      }
+    }
   }
 }
-
