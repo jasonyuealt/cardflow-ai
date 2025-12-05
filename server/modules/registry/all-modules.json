@@ -1,6 +1,6 @@
 {
   "modules": [
-    {
+  {
       "id": "flight",
       "name": "航班搜索",
       "description": "查询飞机航班、比价、查看时刻表、预订机票",
@@ -13,62 +13,62 @@
       "description": "搜索商品（支持 Amazon Japan, Yahoo Japan, 和 Rakuten 平台），提供价格对比和购买链接",
       "keywords": ["买", "购物", "商品", "特产", "装备", "多少钱", "代购", "shopping", "buy"],
       "recommendedLayout": "horizontal-scrollable-list"
-    },
-    {
+  },
+  {
       "id": "yelp",
       "name": "餐厅搜索",
       "description": "搜索餐厅、咖啡馆、酒吧等本地服务，查看评分、菜系、营业时间",
       "keywords": ["餐厅", "美食", "吃饭", "restaurant", "food", "dining", "eat", "lunch", "dinner"],
       "recommendedLayout": "horizontal-scrollable-list"
-    },
-    {
+  },
+  {
       "id": "videos",
       "name": "视频搜索",
       "description": "搜索和播放视频内容，支持多个视频平台",
       "keywords": ["视频", "播放", "观看", "video", "watch", "play"],
       "recommendedLayout": "horizontal-scrollable-list"
-    },
-    {
+  },
+  {
       "id": "images",
       "name": "图片搜索",
       "description": "搜索和查看图片，支持多个图片来源",
       "keywords": ["图片", "照片", "图像", "image", "photo", "picture"],
       "recommendedLayout": "horizontal-scrollable-list"
-    },
-    {
+  },
+  {
       "id": "info_card",
       "name": "信息搜索",
       "description": "在线搜索当前信息、新闻、事实和实时数据，提供详细的搜索结果和来源",
       "keywords": ["搜索", "信息", "新闻", "事实", "数据", "search", "information", "news"],
       "recommendedLayout": "info-display"
-    },
-    {
+  },
+  {
       "id": "line_general_agent",
       "name": "消息对话",
       "description": "与朋友/他人通过Line、WhatsApp等消息应用聊天，确认或询问具体事项",
       "keywords": ["聊天", "消息", "询问", "ask", "tell", "check with", "Line", "WhatsApp"],
       "recommendedLayout": "interactive-action"
-    },
-    {
+  },
+  {
       "id": "general_agent",
       "name": "应用控制",
       "description": "访问和控制第三方应用程序和服务（Gmail、Google Maps、Google Calendar等26个预定义工作流程）",
       "keywords": ["Gmail", "邮件", "日历", "地图", "Google Maps", "Google Calendar", "email"],
       "recommendedLayout": "interactive-action"
-    },
-    {
+  },
+  {
       "id": "orchestration_agent",
       "name": "工作流程",
       "description": "多步骤工作流程，结合多个来源的数据，访问用户信息，启动应用程序，按顺序执行复杂操作",
       "keywords": ["编排", "工作流", "多步骤", "orchestration", "workflow", "automation"],
       "recommendedLayout": "interactive-action"
-    },
-    {
+  },
+  {
       "id": "meeting_view",
       "name": "会面推荐",
       "description": "推荐附近适合会面的地点，支持地图展示和横向滑动查看",
       "keywords": ["会面", "见面", "约会", "地点", "推荐", "meeting", "meet"],
       "recommendedLayout": "map-view-horizontal"
-    }
-  ]
+  }
+]
 }

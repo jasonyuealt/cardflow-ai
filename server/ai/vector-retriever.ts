@@ -18,6 +18,29 @@ export class VectorRetriever {
       score: this.calculateSimilarity(query, module),
     }));
 
+    // 5. 关联推荐增强
+    // 如果某个模块得分很高（说明是主意图），则自动给它的关联模块加分
+    const topModule = scored.find(s => s.score >= 10); // 阈值可调
+    if (topModule) {
+      const relatedModules = this.getRelatedModules(topModule.module.id, modules);
+      relatedModules.forEach(related => {
+        // 检查这个关联模块是否已经在 scored 列表里
+        const existingItem = scored.find(s => s.module.id === related.id);
+        if (existingItem) {
+          // 给它加一点“关联分”，确保它能排进前5
+          existingItem.score += 4; 
+          console.log(`   🔗 关联推荐: 因命中 ${topModule.module.id}，推荐 ${related.id}`);
+        } else {
+          // 如果之前没分（被过滤了），现在把它加回来
+           scored.push({ module: related, score: 4 });
+           console.log(`   🔗 关联召回: 因命中 ${topModule.module.id}，召回 ${related.id}`);
+        }
+      });
+      
+      // 重新排序
+      scored.sort((a, b) => b.score - a.score);
+    }
+
     // 按分数排序
     scored.sort((a, b) => b.score - a.score);
 
@@ -135,5 +158,22 @@ export class VectorRetriever {
     }
 
     return 0;
+  }
+
+  /**
+   * 获取相关模块（根据主模块推荐）
+   */
+  private getRelatedModules(primaryModuleId: string, allModules: ModuleSummary[]): ModuleSummary[] {
+    const relatedMap: Record<string, string[]> = {
+      flight: ['hotel', 'yelp', 'info_card', 'shopping'], // 订机票 -> 推荐酒店、美食、天气/汇率、购物
+      hotel: ['yelp', 'map_view', 'flight'],              // 订酒店 -> 推荐美食、地图、机票
+      yelp: ['map_view', 'ride_hailing'],                 // 找餐厅 -> 推荐地图、打车(未实现模块暂时忽略)
+      meeting_view: ['yelp', 'line_general_agent'],       // 约会 -> 推荐餐厅、发消息
+      videos: ['images', 'info_card'],
+      shopping: ['info_card']                             // 购物 -> 推荐汇率
+    };
+
+    const relatedIds = relatedMap[primaryModuleId] || [];
+    return allModules.filter(m => relatedIds.includes(m.id));
   }
 }

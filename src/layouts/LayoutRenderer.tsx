@@ -31,12 +31,7 @@ export const LayoutRenderer: React.FC<LayoutRendererProps> = ({ module }) => {
 
   return (
     <div className="module-card w-full mb-6">
-      {module.reason && (
-        <div className="px-1 mb-2 text-sm text-slate-500 flex items-center gap-2">
-          <span className="w-1 h-4 bg-blue-500 rounded-full"></span>
-          {module.reason}
-        </div>
-      )}
+      {/* Reason display removed as requested */}
       
       {module.loading ? (
         <div className="p-4 text-center text-gray-400 text-sm">加载中...</div>

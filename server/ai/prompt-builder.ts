@@ -22,22 +22,27 @@ ${moduleDescriptions}
 
 # Your Output Format (JSON Only)
 {
-  "targetModuleId": "string (id of the chosen module)",
-  "targetLayout": "string (the recommendedLayout of the module)",
-  "apiCall": {
-    "id": "string (the API operation to call, e.g., 'search')",
-    "params": {
-      "key": "value (extracted from user input)"
+  "modules": [
+    {
+      "targetModuleId": "string",
+      "targetLayout": "string",
+      "apiCall": {
+        "id": "string",
+        "params": { "key": "value" }
+      },
+      "reason": "string"
     }
-  },
-  "reason": "string (why you chose this module)"
+  ]
 }
 
 # Rules
-1. Select the most relevant module.
-2. Extract parameters for the API.
-3. If no parameters are provided, use reasonable defaults or leave empty if optional.
-4. Return ONLY JSON. No markdown, no explanation.
+1. Analyze user input for MULTIPLE intents.
+2. Select ALL relevant modules from the available list.
+3. CRITICAL: Even if the user only asks for one thing (e.g., "flight"), YOU MUST RECOMMEND RELATED MODULES if they make sense in the context (e.g., "hotel" or "transport" for a trip).
+4. If specific parameters are missing for recommended modules, use reasonable defaults (e.g. destination city from flight).
+5. If the user intent implies a sequence (e.g., "book flight then hotel"), preserve the logical order.
+6. Extract parameters for each API call independently.
+7. Return ONLY JSON. The root object must contain a "modules" array.
 `;
   }
 

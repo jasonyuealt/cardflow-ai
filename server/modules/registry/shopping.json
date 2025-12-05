@@ -1,5 +1,5 @@
 {
-  "id": "shopping",
+    "id": "shopping",
   "name": "商品搜索",
   "description": "搜索商品（支持 Amazon Japan, Yahoo Japan, 和 Rakuten 平台），提供价格对比和购买链接",
   "keywords": ["买", "购物", "商品", "特产", "装备", "多少钱", "代购", "shopping", "buy"],
@@ -12,7 +12,7 @@
       "parameters": {
         "keyword": "搜索关键词",
         "city": "城市（可选）"
-      }
-    }
+  }
+}
   }
 }

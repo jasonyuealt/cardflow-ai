@@ -91,26 +91,31 @@ export class AIExecutor {
   }
 
   private convertToExecutionPlan(planData: any): ExecutionPlan {
-    const moduleConfig = new ExecutionModuleConfig(
-      `${planData.targetModuleId}-${Date.now()}`,
-      planData.targetModuleId,
-      1,
-      true,
-      {
-        layout: planData.targetLayout,
-        cardStyle: 'elevated',
-        colorScheme: 'auto',
-        density: 'comfortable'
-      },
-      {
-        apiId: planData.apiCall.id,
-        endpoint: '', // 暂时留空，由 PlanExecutor 填充或查找
-        method: 'POST',
-        parameters: planData.apiCall.params || {}
-      },
-      {}, // interactionApis 暂时留空，由 Loader 填充
-      planData.reason
-    );
+    // 支持新的多模块格式 { modules: [...] } 或旧的单模块格式
+    const modulesData = planData.modules || [planData];
+
+    const moduleConfigs = modulesData.map((mod: any, index: number) => {
+      return new ExecutionModuleConfig(
+        `${mod.targetModuleId}-${Date.now()}-${index}`,
+        mod.targetModuleId,
+        index + 1, // 优先级按顺序排列
+        index === 0, // 只有第一个默认展开
+        {
+          layout: mod.targetLayout,
+          cardStyle: index === 0 ? 'elevated' : 'flat',
+          colorScheme: 'auto',
+          density: 'comfortable'
+        },
+        {
+          apiId: mod.apiCall.id,
+          endpoint: '', 
+          method: 'POST',
+          parameters: mod.apiCall.params || {}
+        },
+        {},
+        mod.reason
+      );
+    });
 
     return {
       globalStyle: {
@@ -118,7 +123,7 @@ export class AIExecutor {
         accentColor: 'blue',
         pageLayout: 'vertical'
       },
-      modules: [moduleConfig]
+      modules: moduleConfigs
     };
   }
 }

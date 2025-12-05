@@ -41,11 +41,59 @@ export class PlanExecutor {
           continue;
         }
 
-        // 1. 执行初始 API 获取 Raw Data
-        console.log(`   加载模块: ${moduleConfig.moduleId}`);
-        console.log(`   调用 API: ${moduleConfig.initialApi.apiId}`);
+        // 1. 解析并执行初始 API
+        const operationId = moduleConfig.initialApi.apiId; // AI 返回的操作ID
+        let apiDef = moduleDef.apis[operationId];
         
-        const apiResponse = await this.apiExecutor.execute(moduleConfig.initialApi);
+        if (!apiDef) {
+          console.log(`   ⚠️ API 定义未找到: ${moduleConfig.moduleId} -> ${operationId}`);
+          
+          // 智能匹配策略
+          const apiKeys = Object.keys(moduleDef.apis);
+          
+          // 策略1: 如果 AI 返回了 "searchFlights"，尝试匹配 "search"
+          const fuzzyMatch = apiKeys.find(key => 
+            operationId.toLowerCase().includes(key.toLowerCase()) || 
+            key.toLowerCase().includes(operationId.toLowerCase())
+          );
+          
+          if (fuzzyMatch) {
+            console.log(`   🔄 智能匹配: 使用 "${fuzzyMatch}" 代替 "${operationId}"`);
+            apiDef = moduleDef.apis[fuzzyMatch];
+          }
+          // 策略2: 如果只有一个 API，就直接用它（最强兜底）
+          else if (apiKeys.length === 1) {
+             console.log(`   🔄 默认匹配: 使用唯一 API "${apiKeys[0]}"`);
+             apiDef = moduleDef.apis[apiKeys[0]];
+          }
+          // 策略3: 尝试找 "initial" 或 "search"
+          else if (moduleDef.apis['search']) {
+             apiDef = moduleDef.apis['search'];
+          }
+          
+          if (!apiDef) {
+            console.error(`   ❌ 无法找到匹配的 API，跳过模块`);
+            continue;
+          }
+        }
+
+        // 构造真正的 ApiCallConfig
+        // 关键修复：从 endpoint 提取 ID 用于 Mock 查找 
+        // 例如: /api/flights/search -> flights/search (对应 flights-search.json)
+        let realApiId = apiDef.endpoint.replace(/^\/api\//, '');
+        // 移除可能的 query string
+        realApiId = realApiId.split('?')[0];
+        
+        const realApiCall = {
+            ...moduleConfig.initialApi,
+            apiId: realApiId,
+            endpoint: apiDef.endpoint
+        };
+
+        console.log(`   加载模块: ${moduleConfig.moduleId}`);
+        console.log(`   操作映射: ${operationId} -> ${realApiId}`);
+        
+        const apiResponse = await this.apiExecutor.execute(realApiCall);
 
         if (!apiResponse.success) {
           console.error(`   API 执行失败: ${moduleConfig.initialApi.apiId}`);
