@@ -20,9 +20,16 @@ export const HomePage: React.FC = () => {
     }
   }, [loading, modules.length]);
 
-  const handleSubmit = async (e?: React.FormEvent) => {
+  const handleSubmit = async (e?: React.FormEvent, overrideInput?: string) => {
     e?.preventDefault();
-    if (!userInput.trim()) return;
+    const inputToUse = overrideInput || userInput;
+    
+    if (!inputToUse.trim() || loading) return;
+
+    // 如果使用了推荐词，同步更新输入框状态
+    if (overrideInput) {
+      setUserInput(overrideInput);
+    }
 
     // 收起键盘
     (document.activeElement as HTMLElement)?.blur();
@@ -30,12 +37,13 @@ export const HomePage: React.FC = () => {
     // 立即重置状态，清除旧卡片
     reset();
 
+    // 清空输入框
+    setUserInput('');
+
     // 稍微延迟加载，让 UI 有机会先渲染空状态
     setTimeout(async () => {
-      await loadModules(userInput.trim());
+      await loadModules(inputToUse.trim());
     }, 0);
-
-    setUserInput('');
   };
 
   const handleReset = () => {
@@ -97,7 +105,7 @@ export const HomePage: React.FC = () => {
                 ].map((text) => (
                   <button
                     key={text}
-                    onClick={() => { setUserInput(text); handleSubmit(); }}
+                    onClick={() => setUserInput(text)}
                     className="text-left px-5 py-4 rounded-2xl bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all active:scale-98 text-sm text-slate-600 border border-slate-100"
                   >
                     "{text}"

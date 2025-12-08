@@ -3,24 +3,24 @@
   "response": [
     {
       "id": "action_1",
-      "name": "Gmail",
-      "icon": "📧",
-      "description": "查看最近邮件",
-      "action": "查看邮件"
+      "label": "发送邮件",
+      "icon": "mail",
+      "description": "撰写并发送新的电子邮件",
+      "status": "idle"
     },
     {
       "id": "action_2",
-      "name": "Google Maps",
-      "icon": "🗺️",
-      "description": "搜索地点和导航",
-      "action": "打开地图"
+      "label": "创建日程",
+      "icon": "calendar",
+      "description": "在日历中添加新的事件",
+      "status": "idle"
     },
     {
       "id": "action_3",
-      "name": "Google Calendar",
-      "icon": "📅",
-      "description": "管理日程安排",
-      "action": "查看日历"
+      "label": "导航回家",
+      "icon": "navigation",
+      "description": "打开地图并规划回家的路线",
+      "status": "idle"
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "delay": 500,
+  "response": [
+    {
+      "id": "movie_1",
+      "title": "阿凡达：水之道",
+      "rating": "9.2",
+      "image": "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+      "tags": ["科幻", "冒险", "动作"],
+      "subtitle": "2022 • 詹姆斯·卡梅隆",
+      "details": ["IMAX 3D", "192分钟"]
+    },
+    {
+      "id": "movie_2",
+      "title": "流浪地球2",
+      "rating": "9.3",
+      "image": "https://image.tmdb.org/t/p/w500/y2Ca1neKke2mGPMaZvXdJwW94Ya.jpg",
+      "tags": ["科幻", "灾难"],
+      "subtitle": "2023 • 郭帆",
+      "details": ["中国巨幕", "173分钟"]
+    },
+    {
+      "id": "movie_3",
+      "title": "奥本海默",
+      "rating": "9.5",
+      "image": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "tags": ["传记", "剧情", "历史"],
+      "subtitle": "2023 • 克里斯托弗·诺兰",
+      "details": ["IMAX", "180分钟"]
+    },
+    {
+      "id": "movie_4",
+      "title": "千与千寻",
+      "rating": "9.4",
+      "image": "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUKGnSxQbUgZ.jpg",
+      "tags": ["动画", "奇幻", "冒险"],
+      "subtitle": "2001 • 宫崎骏",
+      "details": ["经典重映", "125分钟"]
+    }
+  ]
+}
+

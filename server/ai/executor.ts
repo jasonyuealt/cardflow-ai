@@ -31,7 +31,9 @@ export class AIExecutor {
       console.log(`   向量检索候选: ${relevantModules.map(m => m.id).join(', ')}`);
 
       if (relevantModules.length === 0) {
-        throw new Error('没有找到匹配的模块');
+        console.log('   ⚠️ 未找到匹配模块，启用通用兜底策略 (General Info Fallback)');
+        // Fallback: 使用 info_card 进行通用搜索
+        return this.createFallbackPlan(userInput);
       }
 
       // 2. 构建 Planner Prompt
@@ -45,7 +47,15 @@ export class AIExecutor {
       console.log('   Planner 决策:', JSON.stringify(planData, null, 2));
 
       // 5. 转换为 ExecutionPlan 格式
-      return this.convertToExecutionPlan(planData);
+      const plan = this.convertToExecutionPlan(planData);
+
+      // 6. 二次兜底：如果 Planner 也没生成任何模块（可能是觉得不匹配），强制兜底
+      if (plan.modules.length === 0) {
+        console.log('   ⚠️ Planner 返回空计划，启用通用兜底策略 (General Info Fallback)');
+        return this.createFallbackPlan(userInput);
+      }
+
+      return plan;
 
     } catch (error: any) {
       console.error('Planner Error:', error.message);
@@ -124,6 +134,43 @@ export class AIExecutor {
         pageLayout: 'vertical'
       },
       modules: moduleConfigs
+    };
+  }
+
+  /**
+   * 创建兜底计划
+   */
+  private createFallbackPlan(userInput: string): ExecutionPlan {
+    const fallbackModule = new ExecutionModuleConfig(
+      `fallback-${Date.now()}`,
+      'info_card',
+      1,
+      true,
+      {
+        layout: 'info-display',
+        cardStyle: 'elevated',
+        colorScheme: 'auto',
+        density: 'comfortable'
+      },
+      {
+        apiId: 'universal', // 使用新的通用搜索 API
+        endpoint: '',
+        method: 'POST',
+        parameters: {
+          query: userInput
+        }
+      },
+      {},
+      '未找到精确匹配的工具，执行通用全网搜索'
+    );
+
+    return {
+      globalStyle: {
+        theme: 'light',
+        accentColor: 'gray',
+        pageLayout: 'vertical'
+      },
+      modules: [fallbackModule]
     };
   }
 }

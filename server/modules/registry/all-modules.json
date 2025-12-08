@@ -69,6 +69,41 @@
       "description": "推荐附近适合会面的地点，支持地图展示和横向滑动查看",
       "keywords": ["会面", "见面", "约会", "地点", "推荐", "meeting", "meet"],
       "recommendedLayout": "map-view-horizontal"
-  }
-]
+    },
+    {
+      "id": "hotel",
+      "name": "酒店搜索",
+      "description": "搜索酒店、旅馆、民宿，查看价格、评分、设施和位置",
+      "keywords": ["酒店", "住宿", "宾馆", "房", "hotel", "accommodation", "booking", "stay", "room"],
+      "recommendedLayout": "horizontal-scrollable-list"
+    },
+    {
+      "id": "weather",
+      "name": "天气查询",
+      "description": "查询世界各地的实时天气、未来预报、空气质量等气象信息",
+      "keywords": ["天气", "气温", "下雨", "预报", "空气质量", "weather", "temperature", "forecast", "rain"],
+      "recommendedLayout": "info-display"
+    },
+    {
+      "id": "movie",
+      "name": "电影搜索",
+      "description": "查询正在热映或即将上映的电影，查看评分、简介和影评",
+      "keywords": ["电影", "看电影", "影片", "movie", "film", "cinema", "watch"],
+      "recommendedLayout": "horizontal-scrollable-list"
+    },
+    {
+      "id": "music",
+      "name": "音乐搜索",
+      "description": "搜索歌曲、专辑、艺术家或播放列表",
+      "keywords": ["音乐", "歌曲", "听歌", "music", "song", "listen", "audio"],
+      "recommendedLayout": "horizontal-scrollable-list"
+    },
+    {
+      "id": "rent",
+      "name": "租房搜索",
+      "description": "搜索附近的公寓、整租、合租房源，查看租金、房型、面积和配套设施",
+      "keywords": ["租房", "找房", "公寓", "合租", "整租", "房租", "rent", "apartment", "house", "lease"],
+      "recommendedLayout": "horizontal-scrollable-list"
+    }
+  ]
 }

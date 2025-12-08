@@ -1,0 +1,22 @@
+{
+  "delay": 600,
+  "response": [
+    {
+      "title": "关于 \"${params.query}\" 的搜索结果",
+      "summary": "这是一个关于 \"${params.query}\" 的智能聚合结果。CardFlow 已为您检索了相关网络信息。在真实环境中，这里将连接 Google/Bing 搜索 API，为您提供最准确的实时问答、百科知识或网页摘要。",
+      "metadata": [
+        { "label": "来源", "value": "全网搜索" },
+        { "label": "匹配度", "value": "High" }
+      ]
+    },
+    {
+      "title": "${params.query} - 维基百科",
+      "summary": "${params.query} 的详细定义和背景知识解释。此处模拟了从维基百科获取的词条摘要信息。",
+      "metadata": [
+        { "label": "来源", "value": "Wikipedia" },
+        { "label": "语言", "value": "中文" }
+      ]
+    }
+  ]
+}
+

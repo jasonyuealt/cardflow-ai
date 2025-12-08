@@ -8,7 +8,15 @@
     "search": {
       "endpoint": "/api/info/search",
       "method": "POST",
-      "description": "搜索信息",
+      "description": "搜索新闻和特定信息",
+      "parameters": {
+        "query": "搜索关键词"
+      }
+    },
+    "universal": {
+      "endpoint": "/api/info/universal",
+      "method": "POST",
+      "description": "通用知识和网页搜索（用于兜底）",
       "parameters": {
         "query": "搜索关键词"
       }

@@ -1,0 +1,19 @@
+{
+  "id": "movie",
+  "name": "电影搜索",
+  "description": "查询正在热映或即将上映的电影，查看评分、简介和影评",
+  "keywords": ["电影", "看电影", "影片", "movie", "film", "cinema", "watch"],
+  "recommendedLayout": "horizontal-scrollable-list",
+  "apis": {
+    "search": {
+      "endpoint": "/api/movies/search",
+      "method": "POST",
+      "description": "搜索电影",
+      "parameters": {
+        "query": "电影名称或类型",
+        "city": "城市（可选）"
+      }
+    }
+  }
+}
+

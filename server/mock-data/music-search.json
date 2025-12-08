@@ -1,0 +1,36 @@
+{
+  "delay": 400,
+  "response": [
+    {
+      "id": "music_1",
+      "title": "Anti-Hero",
+      "subtitle": "Taylor Swift • Midnights",
+      "image": "https://upload.wikimedia.org/wikipedia/en/9/9f/Midnights_-_Taylor_Swift.png",
+      "tags": ["Pop", "Synth-pop"],
+      "highlight": { "value": "New", "color": "primary" }
+    },
+    {
+      "id": "music_2",
+      "title": "七里香",
+      "subtitle": "周杰伦 • 七里香",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Jay_Chou_Common_Jasmin_Orange.jpg/220px-Jay_Chou_Common_Jasmin_Orange.jpg",
+      "tags": ["流行", "R&B"],
+      "highlight": { "value": "Hot", "color": "danger" }
+    },
+    {
+      "id": "music_3",
+      "title": "Flowers",
+      "subtitle": "Miley Cyrus • Endless Summer Vacation",
+      "image": "https://upload.wikimedia.org/wikipedia/en/6/63/Miley_Cyrus_-_Flowers.png",
+      "tags": ["Disco", "Funk", "Pop"]
+    },
+    {
+      "id": "music_4",
+      "title": "As It Was",
+      "subtitle": "Harry Styles • Harry's House",
+      "image": "https://upload.wikimedia.org/wikipedia/en/d/db/Harry_Styles_-_As_It_Was.png",
+      "tags": ["Synth-pop", "New Wave"]
+    }
+  ]
+}
+

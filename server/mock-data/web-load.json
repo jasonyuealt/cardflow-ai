@@ -1,9 +1,0 @@
-{
-  "delay": 100,
-  "response": {
-    "url": "https://www.shanghai-disney.com/tickets",
-    "title": "迪士尼乐园购票",
-    "secure": true
-  }
-}
-

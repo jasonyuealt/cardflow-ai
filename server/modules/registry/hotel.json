@@ -1,0 +1,20 @@
+{
+  "id": "hotel",
+  "name": "酒店搜索",
+  "description": "搜索酒店、旅馆、民宿，查看价格、评分、设施和位置",
+  "keywords": ["酒店", "住宿", "宾馆", "房", "hotel", "accommodation", "booking", "stay", "room"],
+  "recommendedLayout": "horizontal-scrollable-list",
+  "apis": {
+    "search": {
+      "endpoint": "/api/hotels/search",
+      "method": "POST",
+      "description": "搜索酒店",
+      "parameters": {
+        "location": "位置或城市",
+        "date": "入住日期",
+        "guests": "人数"
+      }
+    }
+  }
+}
+

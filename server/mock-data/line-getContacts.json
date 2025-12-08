@@ -1,29 +1,23 @@
 {
-  "delay": 500,
+  "delay": 300,
   "response": [
     {
       "id": "contact_1",
-      "name": "张三",
-      "icon": "👤",
-      "lastMessage": "今天有空吗？",
-      "time": "10分钟前",
-      "unread": 2
+      "name": "Alice Smith",
+      "avatar": "https://i.pravatar.cc/150?u=alice",
+      "status": "online"
     },
     {
       "id": "contact_2",
-      "name": "李四",
-      "icon": "👤",
-      "lastMessage": "明天见",
-      "time": "1小时前",
-      "unread": 0
+      "name": "Bob Johnson",
+      "avatar": "https://i.pravatar.cc/150?u=bob",
+      "status": "offline"
     },
     {
       "id": "contact_3",
-      "name": "王五",
-      "icon": "👤",
-      "lastMessage": "收到",
-      "time": "昨天",
-      "unread": 1
+      "name": "Carol Williams",
+      "avatar": "https://i.pravatar.cc/150?u=carol",
+      "status": "busy"
     }
   ]
 }

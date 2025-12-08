@@ -1,0 +1,20 @@
+{
+  "id": "rent",
+  "name": "租房搜索",
+  "description": "搜索附近的公寓、整租、合租房源，查看租金、房型、面积和配套设施",
+  "keywords": ["租房", "找房", "公寓", "合租", "整租", "房租", "rent", "apartment", "house", "lease"],
+  "recommendedLayout": "horizontal-scrollable-list",
+  "apis": {
+    "search": {
+      "endpoint": "/api/rent/search",
+      "method": "POST",
+      "description": "搜索房源",
+      "parameters": {
+        "location": "区域或地段",
+        "budget": "预算范围（可选）",
+        "type": "整租/合租（可选）"
+      }
+    }
+  }
+}
+

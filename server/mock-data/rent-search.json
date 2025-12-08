@@ -1,0 +1,38 @@
+{
+  "delay": 400,
+  "response": [
+    {
+      "id": "rent_1",
+      "title": "静安寺·精装一室一厅",
+      "subtitle": "45㎡ • 南向 • 步行至地铁5分钟",
+      "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&q=80",
+      "highlight": { "value": "¥6,800/月", "color": "primary" },
+      "details": ["整租", "押一付三", "民水民电"]
+    },
+    {
+      "id": "rent_2",
+      "title": "法租界·老洋房主卧",
+      "subtitle": "25㎡ • 独立卫浴 • 带阳台",
+      "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&q=80",
+      "highlight": { "value": "¥4,500/月", "color": "primary" },
+      "details": ["合租", "限女生", "近武康大楼"]
+    },
+    {
+      "id": "rent_3",
+      "title": "陆家嘴·江景豪华公寓",
+      "subtitle": "120㎡ • 全屋智能 • 落地窗",
+      "image": "https://images.unsplash.com/photo-1502005229766-3c8ef9550bb6?w=500&q=80",
+      "highlight": { "value": "¥15,000/月", "color": "danger" },
+      "details": ["整租", "拎包入住", "管家服务"]
+    },
+    {
+      "id": "rent_4",
+      "title": "张江高科·人才公寓",
+      "subtitle": "30㎡ • Loft复式 • 园区班车",
+      "image": "https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=500&q=80",
+      "highlight": { "value": "¥3,200/月", "color": "success" },
+      "details": ["整租", "押一付一", "适合白领"]
+    }
+  ]
+}
+
