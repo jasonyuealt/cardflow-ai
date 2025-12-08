@@ -121,6 +121,21 @@ export class VectorRetriever {
         triggers: ['图片', '照片', '图', '相片', 'image', 'photo', 'picture'],
         bonus: 7,
       },
+      // 音乐 (NEW)
+      music: {
+        triggers: ['音乐', '歌曲', '听', '歌', 'music', 'song', 'listen', 'audio'],
+        bonus: 9,
+      },
+      // 租房 (NEW)
+      rent: {
+        triggers: ['租房', '找房', '公寓', '合租', '整租', '房租', 'rent', 'apartment'],
+        bonus: 9,
+      },
+      // 电影 (NEW)
+      movie: {
+        triggers: ['电影', '看电影', '影片', 'movie', 'film'],
+        bonus: 9,
+      },
       // 信息/百科/天气
       info_card: {
         triggers: ['搜索', '查询', '天气', '气温', '汇率', '新闻', '是谁', '什么', 'search', 'info', 'weather', 'news'],
@@ -128,7 +143,7 @@ export class VectorRetriever {
       },
       // 聊天
       line_general_agent: {
-        triggers: ['聊天', '消息', '询问', 'Line', 'WhatsApp', '问一下', '联系', 'chat', 'message', 'ask'],
+        triggers: ['聊天', '消息', '询问', 'Line', 'WhatsApp', '问', '联系', '发消息', 'chat', 'message', 'ask'],
         bonus: 8,
       },
       // 应用控制
@@ -138,13 +153,13 @@ export class VectorRetriever {
       },
       // 工作流
       orchestration_agent: {
-        triggers: ['编排', '工作流', '多步骤', '安排', '计划', 'workflow', 'arrange', 'plan'],
+        triggers: ['编排', '工作流', '多步骤', '安排', '计划', '模式', '早安', 'routine', 'workflow', 'arrange', 'plan'],
         bonus: 6,
       },
       // 会面地图
       meeting_view: {
-        triggers: ['地图', '位置', '会面', '约会', '见面', '哪里见', 'meet', 'date', 'location'],
-        bonus: 8,
+        triggers: ['地图', '位置', '会面', '约会', '见面', '哪里见', '地方', '推荐个', 'meet', 'date', 'location'],
+        bonus: 9, // 提高权重以覆盖 yelp
       }
     };
 
@@ -165,12 +180,14 @@ export class VectorRetriever {
    */
   private getRelatedModules(primaryModuleId: string, allModules: ModuleSummary[]): ModuleSummary[] {
     const relatedMap: Record<string, string[]> = {
-      flight: ['hotel', 'yelp', 'info_card', 'shopping'], // 订机票 -> 推荐酒店、美食、天气/汇率、购物
-      hotel: ['yelp', 'map_view', 'flight'],              // 订酒店 -> 推荐美食、地图、机票
-      yelp: ['map_view', 'ride_hailing'],                 // 找餐厅 -> 推荐地图、打车(未实现模块暂时忽略)
-      meeting_view: ['yelp', 'line_general_agent'],       // 约会 -> 推荐餐厅、发消息
+      flight: ['hotel', 'yelp', 'info_card', 'shopping', 'rent'], // 扩展关联
+      hotel: ['yelp', 'map_view', 'flight', 'rent'],
+      yelp: ['map_view', 'ride_hailing'],
+      meeting_view: ['yelp', 'line_general_agent', 'movie'], // 约会 -> 吃饭、看电影
       videos: ['images', 'info_card'],
-      shopping: ['info_card']                             // 购物 -> 推荐汇率
+      shopping: ['info_card'],
+      movie: ['yelp', 'meeting_view'],
+      rent: ['map_view', 'yelp']
     };
 
     const relatedIds = relatedMap[primaryModuleId] || [];

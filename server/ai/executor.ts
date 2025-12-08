@@ -54,7 +54,7 @@ export class AIExecutor {
         console.log('   ⚠️ Planner 返回空计划，启用通用兜底策略 (General Info Fallback)');
         return this.createFallbackPlan(userInput);
       }
-
+      
       return plan;
 
     } catch (error: any) {
@@ -69,7 +69,7 @@ export class AIExecutor {
   async mapToUI(rawData: any, layout: string): Promise<any> {
     try {
       console.log(`🎨 Stage 2: Mapper AI Working (Layout: ${layout})...`);
-      
+
       // 1. 构建 Mapper Prompt
       const messages = PromptBuilder.buildMapperMessages(rawData, layout);
 
@@ -119,7 +119,7 @@ export class AIExecutor {
         {
           apiId: mod.apiCall.id,
           endpoint: '', 
-          method: 'POST',
+        method: 'POST',
           parameters: mod.apiCall.params || {}
         },
         {},
@@ -143,7 +143,7 @@ export class AIExecutor {
   private createFallbackPlan(userInput: string): ExecutionPlan {
     const fallbackModule = new ExecutionModuleConfig(
       `fallback-${Date.now()}`,
-      'info_card',
+      'general_knowledge', // 优先使用 General Knowledge 模块
       1,
       true,
       {
@@ -153,7 +153,7 @@ export class AIExecutor {
         density: 'comfortable'
       },
       {
-        apiId: 'universal', // 使用新的通用搜索 API
+        apiId: 'ask', // general/ask
         endpoint: '',
         method: 'POST',
         parameters: {
@@ -161,7 +161,7 @@ export class AIExecutor {
         }
       },
       {},
-      '未找到精确匹配的工具，执行通用全网搜索'
+      '未找到精确匹配的工具，使用通用知识库回答'
     );
 
     return {

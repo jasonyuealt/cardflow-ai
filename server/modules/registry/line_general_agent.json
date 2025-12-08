@@ -2,7 +2,7 @@
   "id": "line_general_agent",
   "name": "消息对话",
   "description": "与朋友/他人通过Line、WhatsApp等消息应用聊天，确认或询问具体事项",
-  "keywords": ["聊天", "消息", "询问", "ask", "tell", "check with", "Line", "WhatsApp"],
+  "keywords": ["聊天", "消息", "询问", "ask", "tell", "check with", "Line", "WhatsApp", "问", "联系", "发消息"],
   "recommendedLayout": "interactive-action",
   "apis": {
     "getContacts": {

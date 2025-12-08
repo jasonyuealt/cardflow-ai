@@ -104,6 +104,13 @@
       "description": "搜索附近的公寓、整租、合租房源，查看租金、房型、面积和配套设施",
       "keywords": ["租房", "找房", "公寓", "合租", "整租", "房租", "rent", "apartment", "house", "lease"],
       "recommendedLayout": "horizontal-scrollable-list"
+    },
+    {
+      "id": "general_knowledge",
+      "name": "通用知识",
+      "description": "回答常识性问题、提供建议、解释概念、进行创意写作或闲聊",
+      "keywords": ["问答", "知识", "怎么做", "是什么", "建议", "ask", "question", "knowledge", "how to", "what is"],
+      "recommendedLayout": "info-display"
     }
   ]
 }

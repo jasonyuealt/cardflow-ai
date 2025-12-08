@@ -1,0 +1,18 @@
+{
+  "id": "general_knowledge",
+  "name": "通用知识",
+  "description": "回答常识性问题、提供建议、解释概念、进行创意写作或闲聊",
+  "keywords": ["问答", "知识", "怎么做", "是什么", "建议", "ask", "question", "knowledge", "how to", "what is"],
+  "recommendedLayout": "info-display",
+  "apis": {
+    "ask": {
+      "endpoint": "/api/general/ask",
+      "method": "POST",
+      "description": "向 AI 提问",
+      "parameters": {
+        "query": "用户的问题"
+      }
+    }
+  }
+}
+

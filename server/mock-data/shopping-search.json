@@ -3,28 +3,27 @@
   "response": [
     {
       "id": "shop_1",
-      "name": "国际饭店蝴蝶酥",
-      "price": "¥68",
-      "image": "https://source.unsplash.com/random/300x300/?cookie,pastry",
-      "source": "老字号",
-      "tags": ["伴手礼", "必买", "排队王"]
+      "name": "Nintendo Switch OLED",
+      "price": "¥2,199",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Nintendo_Switch_OLED_model_console_set_white.jpg/640px-Nintendo_Switch_OLED_model_console_set_white.jpg",
+      "source": "自营",
+      "tags": ["游戏机", "热销"]
     },
     {
       "id": "shop_2",
-      "name": "大白兔奶糖礼盒",
-      "price": "¥35",
-      "image": "https://source.unsplash.com/random/300x300/?candy,gift",
-      "source": "特产店",
-      "tags": ["童年回忆", "经典"]
+      "name": "${params.keyword} 专用收纳包",
+      "price": "¥89",
+      "image": "https://via.placeholder.com/300x300?text=Case",
+      "source": "周边",
+      "tags": ["配件"]
     },
     {
       "id": "shop_3",
-      "name": "上海故事丝巾",
-      "price": "¥198",
-      "image": "https://source.unsplash.com/random/300x300/?scarf,silk",
-      "source": "专卖店",
-      "tags": ["送长辈", "精致"]
+      "name": "塞尔达传说：王国之泪",
+      "price": "¥350",
+      "image": "https://upload.wikimedia.org/wikipedia/en/f/f5/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
+      "source": "游戏",
+      "tags": ["必玩"]
     }
   ]
 }
-

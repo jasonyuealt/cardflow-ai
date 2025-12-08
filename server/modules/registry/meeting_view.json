@@ -2,7 +2,7 @@
   "id": "meeting_view",
   "name": "会面推荐",
   "description": "推荐附近适合会面的地点，支持地图展示和横向滑动查看",
-  "keywords": ["会面", "见面", "约会", "地点", "推荐", "meeting", "meet"],
+  "keywords": ["会面", "见面", "约会", "地点", "推荐", "meeting", "meet", "date", "地方", "哪里", "折中"],
   "recommendedLayout": "map-view-horizontal",
   "apis": {
     "getRecommendations": {

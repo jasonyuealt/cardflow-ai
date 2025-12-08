@@ -8,15 +8,18 @@ import { fileURLToPath } from 'url';
 import { delay } from '../utils/delay';
 import { modeConfig } from '../config/mode.config';
 import { ApiCallConfig, ApiResponse } from '../../shared/types';
+import { CerebrasClient } from '../ai/cerebras-client';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export class APIExecutor {
   private mockDataPath: string;
+  private cerebrasClient: CerebrasClient;
 
   constructor() {
     this.mockDataPath = path.join(__dirname, '../mock-data');
+    this.cerebrasClient = new CerebrasClient();
   }
 
   /**
@@ -37,6 +40,32 @@ export class APIExecutor {
    */
   private async executeMock(apiCall: ApiCallConfig): Promise<ApiResponse> {
     try {
+      // 特殊处理：General Knowledge 模块直接调用真实的 AI
+      if (apiCall.apiId === 'general/ask') {
+        const query = apiCall.parameters?.query || 'Hello';
+        console.log(`🧠 调用 AI 回答通用问题: "${query}"`);
+
+        const aiResponse = await this.cerebrasClient.chatCompletion([
+          {
+            role: 'system',
+            content: '你是一个知识渊博的助手。请用中文简明扼要地回答用户的问题。如果问题是"你是谁"，请回答你是 CardFlow AI。'
+          },
+          {
+            role: 'user',
+            content: query
+          }
+        ]);
+
+        return ApiResponse.success({
+          title: `关于 "${query}" 的回答`,
+          summary: aiResponse,
+          metadata: [
+            { "label": "来源", "value": "AI Knowledge Base" },
+            { "label": "类型", "value": "Direct Answer" }
+          ]
+        });
+      }
+
       // 根据 apiId 找到对应的 mock 文件
       const mockFile = this.getMockFilePath(apiCall.apiId);
       

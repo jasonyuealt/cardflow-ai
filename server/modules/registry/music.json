@@ -2,7 +2,7 @@
   "id": "music",
   "name": "音乐搜索",
   "description": "搜索歌曲、专辑、艺术家或播放列表",
-  "keywords": ["音乐", "歌曲", "听歌", "music", "song", "listen", "audio"],
+  "keywords": ["音乐", "歌曲", "听歌", "music", "song", "listen", "audio", "听"],
   "recommendedLayout": "horizontal-scrollable-list",
   "apis": {
     "search": {
