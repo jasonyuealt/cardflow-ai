@@ -7,13 +7,17 @@ import { CerebrasClient, ChatMessage } from './cerebras-client';
 import { PromptBuilder } from './prompt-builder';
 import { VectorRetriever } from './vector-retriever';
 
+import { ModuleLoader } from '../modules/loader';
+
 export class AIExecutor {
   private cerebrasClient: CerebrasClient;
   private vectorRetriever: VectorRetriever;
+  private moduleLoader: ModuleLoader;
 
   constructor() {
     this.cerebrasClient = new CerebrasClient();
     this.vectorRetriever = new VectorRetriever();
+    this.moduleLoader = new ModuleLoader();
   }
 
   /**
@@ -35,6 +39,19 @@ export class AIExecutor {
         // Fallback: 使用 info_card 进行通用搜索
         return this.createFallbackPlan(userInput);
       }
+
+      // 1.5 注入详细 API 定义 (NEW)
+      // 在构建 Prompt 前，加载这些候选模块的详细定义，把 apis 塞进去
+      const relevantModuleIds = relevantModules.map(m => m.id);
+      const detailedModulesMap = this.moduleLoader.loadModuleDefinitions(relevantModuleIds);
+      
+      // 更新 relevantModules 中的 apis 字段
+      relevantModules.forEach(summary => {
+        const detail = detailedModulesMap.get(summary.id);
+        if (detail) {
+          summary.apis = detail.apis;
+        }
+      });
 
       // 2. 构建 Planner Prompt
       const messages = PromptBuilder.buildPlannerMessages(userInput, relevantModules);

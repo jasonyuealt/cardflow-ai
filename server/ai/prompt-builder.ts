@@ -10,9 +10,19 @@ export class PromptBuilder {
    * 构建 Planner 系统 Prompt
    */
   static buildPlannerSystemPrompt(modules: ModuleSummary[]): string {
-    const moduleDescriptions = modules.map(m => 
-      `- ${m.id}: ${m.description}\n  关键词: ${m.keywords.join('、')}\n  布局: ${m.recommendedLayout}`
-    ).join('\n');
+    const moduleDescriptions = modules.map(m => {
+      let apisDesc = '';
+      if (m.apis) {
+        apisDesc = '\n  APIs: ' + Object.entries(m.apis).map(([key, api]) => {
+          let paramsDesc = 'none';
+          if (api.parameters) {
+             paramsDesc = Object.entries(api.parameters).map(([pKey, pDesc]) => `${pKey} (${pDesc})`).join(', ');
+          }
+          return `\n    - ${key}: ${api.description} (Params: ${paramsDesc})`;
+        }).join('');
+      }
+      return `- ${m.id}: ${m.description}\n  关键词: ${m.keywords.join('、')}\n  布局: ${m.recommendedLayout}${apisDesc}`;
+    }).join('\n');
 
     return `You are a Planner AI for CardFlow.
 Your goal is to analyze user input and create an execution plan using available modules.
@@ -24,10 +34,10 @@ ${moduleDescriptions}
 {
   "modules": [
     {
-      "targetModuleId": "string",
-      "targetLayout": "string",
+      "targetModuleId": "string (Must match 'id' from Available Modules)",
+      "targetLayout": "string (Must match '布局' from Available Modules)",
       "apiCall": {
-        "id": "string",
+        "id": "string (Must match API key from module definition, e.g. 'search', 'getActions')",
         "params": { "key": "value" }
       },
       "reason": "string"
@@ -43,6 +53,7 @@ ${moduleDescriptions}
 5. If the user intent implies a sequence (e.g., "book flight then hotel"), preserve the logical order.
 6. Extract parameters for each API call independently.
 7. Return ONLY JSON. The root object must contain a "modules" array.
+8. For 'general_knowledge', always use apiCall.id="ask" and params.query="[User Question]".
 `;
   }
 
