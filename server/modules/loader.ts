@@ -35,7 +35,8 @@ export class ModuleLoader {
         s.name, 
         s.description, 
         s.keywords,
-        s.recommendedLayout
+        s.recommendedLayout,
+        undefined // 初始化时没有 APIs 详情
       ));
     } catch (error: any) {
       console.error('加载模块摘要失败:', error.message);

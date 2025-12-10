@@ -50,12 +50,15 @@ export class ModuleSummary {
   keywords: string[];
   recommendedLayout: LayoutType;
 
-  constructor(id: string, name: string, description: string, keywords: string[] = [], recommendedLayout: LayoutType) {
+  apis?: Record<string, ApiDefinition>;
+
+  constructor(id: string, name: string, description: string, keywords: string[] = [], recommendedLayout: LayoutType, apis?: Record<string, ApiDefinition>) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.keywords = keywords;
     this.recommendedLayout = recommendedLayout;
+    this.apis = apis;
   }
 
   static fromModuleDefinition(module: ModuleDefinition): ModuleSummary {
@@ -64,7 +67,8 @@ export class ModuleSummary {
       module.identity.name,
       module.identity.description,
       module.identity.keywords,
-      module.recommendedLayout
+      module.recommendedLayout,
+      module.apis
     );
   }
 }

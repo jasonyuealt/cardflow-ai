@@ -42,7 +42,10 @@ export class APIExecutor {
     try {
       // 特殊处理：General Knowledge 模块直接调用真实的 AI
       if (apiCall.apiId === 'general/ask') {
-        const query = apiCall.parameters?.query || 'Hello';
+        // 增强参数提取：尝试 query, question, text, message 等常见字段，或直接使用参数值
+        const params = apiCall.parameters || {};
+        const query = params.query || params.question || params.text || params.message || Object.values(params)[0] || 'Hello';
+        
         console.log(`🧠 调用 AI 回答通用问题: "${query}"`);
 
         const aiResponse = await this.cerebrasClient.chatCompletion([

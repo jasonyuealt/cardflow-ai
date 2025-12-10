@@ -46,35 +46,8 @@ export class PlanExecutor {
         let apiDef = moduleDef.apis[operationId];
         
         if (!apiDef) {
-          console.log(`   ⚠️ API 定义未找到: ${moduleConfig.moduleId} -> ${operationId}`);
-          
-          // 智能匹配策略
-          const apiKeys = Object.keys(moduleDef.apis);
-          
-          // 策略1: 如果 AI 返回了 "searchFlights"，尝试匹配 "search"
-          const fuzzyMatch = apiKeys.find(key => 
-            operationId.toLowerCase().includes(key.toLowerCase()) || 
-            key.toLowerCase().includes(operationId.toLowerCase())
-          );
-          
-          if (fuzzyMatch) {
-            console.log(`   🔄 智能匹配: 使用 "${fuzzyMatch}" 代替 "${operationId}"`);
-            apiDef = moduleDef.apis[fuzzyMatch];
-          }
-          // 策略2: 如果只有一个 API，就直接用它（最强兜底）
-          else if (apiKeys.length === 1) {
-             console.log(`   🔄 默认匹配: 使用唯一 API "${apiKeys[0]}"`);
-             apiDef = moduleDef.apis[apiKeys[0]];
-          }
-          // 策略3: 尝试找 "initial" 或 "search"
-          else if (moduleDef.apis['search']) {
-             apiDef = moduleDef.apis['search'];
-          }
-          
-          if (!apiDef) {
-            console.error(`   ❌ 无法找到匹配的 API，跳过模块`);
-            continue;
-          }
+          console.error(`   ❌ API 定义未找到: ${moduleConfig.moduleId} -> ${operationId}`);
+          continue;
         }
 
         // 构造真正的 ApiCallConfig
